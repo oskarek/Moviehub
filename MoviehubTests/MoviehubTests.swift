@@ -1,11 +1,3 @@
-//
-//  MoviehubTests.swift
-//  MoviehubTests
-//
-//  Created by Oskar Ek on 2019-11-19.
-//  Copyright © 2019 Oskar Ek. All rights reserved.
-//
-
 import XCTest
 @testable import Moviehub
 

@@ -1,21 +1,33 @@
-//
-//  ContentView.swift
-//  Moviehub
-//
-//  Created by Oskar Ek on 2019-11-19.
-//  Copyright © 2019 Oskar Ek. All rights reserved.
-//
-
 import SwiftUI
+import Search
+import ComposableArchitecture
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello World")
+  @ObservedObject var store: Store<AppState, AppAction>
+  
+  var body: some View {
+    TabView {
+      NavigationView {
+        SearchView(
+          store: self.store.view(
+            value: { $0.search },
+            action: AppAction.search
+          )
+        )
+      }
+        .tabItem {
+          Image(systemName: "1.square.fill")
+          Text("Search")
+        }
     }
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+  static var previews: some View {
+    Group {
+      ContentView(store: store).colorScheme(.light)
+      ContentView(store: store).colorScheme(.dark)
     }
+  }
 }
