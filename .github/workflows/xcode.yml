@@ -10,4 +10,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build and test
-      run: xcodebuild clean test -project Moviehub.xcodeproj -scheme Moviehub -destination 'platform=iOS Simulator,OS=13.1,name=iPhone 11 Pro Max' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+      run: |
+        mkdir -p Generated
+        Tools/sourcery --sources Moviehub --templates Templates/AppSecrets.stencil --output Generated --args themoviedbApiKey=\"test\"
+        echo "THEMOVIEDB_API_KEY = \"test\"" > BuildConfig/release.xcconfig
+        xcodebuild clean test -project Moviehub.xcodeproj -scheme Moviehub -destination 'platform=iOS Simulator,OS=13.1,name=iPhone 11 Pro Max' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+        
