@@ -1,11 +1,11 @@
 import Foundation
 import ComposableArchitecture
-import Movie
+import MediaItem
 import Search
 
 struct AppState {
   var searchText: String = ""
-  var searchResult: [Movie]? = nil
+  var searchResult: [MediaItem]? = nil
 }
 
 extension AppState {

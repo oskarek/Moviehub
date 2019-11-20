@@ -58,6 +58,10 @@
 		FFC8346A2385E80900D38FC7 /* MediaItem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC8344A2385E5B200D38FC7 /* MediaItem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFC8346D2385E80D00D38FC7 /* ComposableArchitecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7752383CE5200B87586 /* ComposableArchitecture.framework */; };
 		FFC8346E2385E80D00D38FC7 /* ComposableArchitecture.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7752383CE5200B87586 /* ComposableArchitecture.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FFC834712385E8B300D38FC7 /* MediaItem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC8344A2385E5B200D38FC7 /* MediaItem.framework */; };
+		FFC834722385E8B300D38FC7 /* MediaItem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC8344A2385E5B200D38FC7 /* MediaItem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FFC834752385E8B800D38FC7 /* API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7C42383E3D400B87586 /* API.framework */; };
+		FFC834762385E8B800D38FC7 /* API.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7C42383E3D400B87586 /* API.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,6 +212,20 @@
 			remoteGlobalIDString = FF89C7742383CE5200B87586;
 			remoteInfo = ComposableArchitecture;
 		};
+		FFC834732385E8B300D38FC7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF89C7432383CCDE00B87586 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FFC834492385E5B200D38FC7;
+			remoteInfo = MediaItem;
+		};
+		FFC834772385E8B800D38FC7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF89C7432383CCDE00B87586 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF89C7C32383E3D400B87586;
+			remoteInfo = API;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -233,6 +251,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				FFC834722385E8B300D38FC7 /* MediaItem.framework in Embed Frameworks */,
+				FFC834762385E8B800D38FC7 /* API.framework in Embed Frameworks */,
 				FF89C7BB2383E06000B87586 /* ComposableArchitecture.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -350,6 +370,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFC834712385E8B300D38FC7 /* MediaItem.framework in Frameworks */,
+				FFC834752385E8B800D38FC7 /* API.framework in Frameworks */,
 				FF89C7BA2383E06000B87586 /* ComposableArchitecture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -765,6 +787,8 @@
 			);
 			dependencies = (
 				FF89C7BD2383E06000B87586 /* PBXTargetDependency */,
+				FFC834742385E8B300D38FC7 /* PBXTargetDependency */,
+				FFC834782385E8B800D38FC7 /* PBXTargetDependency */,
 			);
 			name = Search;
 			productName = Search;
@@ -1371,6 +1395,16 @@
 			target = FF89C7742383CE5200B87586 /* ComposableArchitecture */;
 			targetProxy = FFC8346F2385E80D00D38FC7 /* PBXContainerItemProxy */;
 		};
+		FFC834742385E8B300D38FC7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FFC834492385E5B200D38FC7 /* MediaItem */;
+			targetProxy = FFC834732385E8B300D38FC7 /* PBXContainerItemProxy */;
+		};
+		FFC834782385E8B800D38FC7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF89C7C32383E3D400B87586 /* API */;
+			targetProxy = FFC834772385E8B800D38FC7 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1790,6 +1824,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_TEAM = 6XNB472P6E;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1804,6 +1839,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.OskarApps.API;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1819,6 +1855,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_TEAM = 6XNB472P6E;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1833,6 +1870,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.OskarApps.API;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

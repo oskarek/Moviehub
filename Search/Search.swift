@@ -1,11 +1,12 @@
 import Foundation
 import SwiftUI
 import ComposableArchitecture
-import Movie
+import MediaItem
+import API
 
 public enum SearchAction {
   case textChanged(String)
-  case search
+  case resultChanged([MediaItem]?)
 
   public var textChanged: String? {
     get {
@@ -18,24 +19,33 @@ public enum SearchAction {
     }
   }
 
-  public var search: Void? {
-    guard case .search = self else { return nil }
-    return ()
+  public var resultChanged: [MediaItem]?? {
+    get {
+      guard case let .resultChanged(value) = self else { return nil }
+      return value
+    }
+    set {
+      guard case .resultChanged = self, let newValue = newValue else { return }
+      self = .resultChanged(newValue)
+    }
   }
 }
 
-public typealias SearchState = (searchText: String, searchResult: [Movie]?)
+public typealias SearchState = (searchText: String, searchResult: [MediaItem]?)
 
 public let searchReducer: Reducer<SearchState, SearchAction> = { state, action in
   switch action {
   case let .textChanged(searchString):
     state.searchText = searchString
     return [
+      multiSearch(query: state.searchText)
+        .map(SearchAction.resultChanged)
+        .receive(on: DispatchQueue.main)
+        .eraseToEffect()
     ]
-  case .search:
-    // TODO: search for the movie
-    return [
-    ]
+  case let .resultChanged(items):
+    state.searchResult = items
+    return []
   }
 }
 
@@ -56,6 +66,11 @@ public struct SearchView: View {
           set: { self.store.send(.textChanged($0)) }
         )
       )
+      self.store.value.searchResult.map { items in
+        List(items, id: \MediaItem.title) { item in
+          Text(item.title ?? "No title")
+        }
+      }
       Spacer()
     }.navigationBarTitle("Search")
   }
