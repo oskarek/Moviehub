@@ -729,11 +729,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF89C7FD2383F8A600B87586 /* Build configuration list for PBXNativeTarget "AppSecrets" */;
 			buildPhases = (
+				FF89C8002383F8D300B87586 /* ShellScript */,
 				FF89C7EF2383F8A600B87586 /* Headers */,
 				FF89C7F02383F8A600B87586 /* Sources */,
 				FF89C7F12383F8A600B87586 /* Frameworks */,
 				FF89C7F22383F8A600B87586 /* Resources */,
-				FF89C8002383F8D300B87586 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -978,6 +978,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(SRCROOT)/AppSecrets/AppSecrets.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
