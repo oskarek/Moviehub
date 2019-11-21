@@ -31,6 +31,6 @@ public func multiSearch(query: String) -> Effect<[MediaItem]?> {
     .map { data, _ in data }
     .decode(type: SearchResults.self, decoder: decoder)
     .map { $0.results }
-    .replaceError(with: [])
+    .replaceError(with: nil)
     .eraseToEffect()
 }
