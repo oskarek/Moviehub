@@ -12,14 +12,14 @@ let imageBaseUrl = URL(string: "https://image.tmdb.org/t/p")!
 private let tmdbDecoder = update(JSONDecoder(), mut(\.keyDecodingStrategy, .convertFromSnakeCase))
 
 private func tmdbRequest(path: String, parameters: [String: String] = [:]) -> URLRequest {
-  var components = URLComponents(string: path)!
-  components.queryItems = parameters.map(URLQueryItem.init)
+  let components = update(
+    URLComponents(string: path)!,
+    mut(\.queryItems, parameters.map(URLQueryItem.init))
+  )
 
   let headers = ["Authorization": "Bearer " + apiKey]
-  var request = URLRequest(url: components.url(relativeTo: baseUrl)!)
-  request.allHTTPHeaderFields = headers
-
-  return request
+  let url = components.url(relativeTo: baseUrl)!
+  return update(URLRequest(url: url), mut(\.allHTTPHeaderFields, headers))
 }
 
 struct SearchResults: Codable {
