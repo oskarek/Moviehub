@@ -5,7 +5,7 @@ import Search
 
 struct AppState {
   var searchText: String = ""
-  var searchResult: [MediaItem]? = nil
+  var searchResult: [MediaItem]?
 }
 
 extension AppState {

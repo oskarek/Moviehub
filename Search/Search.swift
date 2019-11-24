@@ -52,11 +52,11 @@ public let searchReducer: Reducer<SearchState, SearchAction> = { state, action i
 public struct SearchView: View {
   @State var searchText: String = ""
   @ObservedObject var store: Store<SearchState, SearchAction>
-  
+
   public init(store: Store<SearchState, SearchAction>) {
     self.store = store
   }
-  
+
   public var body: some View {
     VStack {
       SearchBar(

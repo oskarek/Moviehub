@@ -638,6 +638,7 @@
 				FF89C7482383CCDE00B87586 /* Frameworks */,
 				FF89C7492383CCDE00B87586 /* Resources */,
 				FF89C78F2383CE5200B87586 /* Embed Frameworks */,
+				FFA90038238AEE0D0079046B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1061,6 +1062,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "mkdir -p Generated\nTools/sourcery --sources Moviehub --templates Templates/AppSecrets.stencil --output Generated --args themoviedbApiKey=\\\"$THEMOVIEDB_API_KEY\\\"\n";
+		};
+		FFA90038238AEE0D0079046B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "Tools/swiftlint\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

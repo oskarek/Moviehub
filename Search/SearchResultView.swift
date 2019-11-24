@@ -33,7 +33,7 @@ private func subtitle(for mediaItem: MediaItem) -> String {
     guard let knownFor = person.knownFor else {
       return "Not known for anything. A loser."
     }
-    
+
     let knownForString = knownFor.map(title(for:)).joined(separator: ", ")
     return "Known for: \(knownForString)"
   }
@@ -59,7 +59,7 @@ struct SearchResultCell: View {
 
 struct SearchResultCell_Previews: PreviewProvider {
   static let item = dummyMediaItem
-  
+
   static var previews: some View {
     SearchResultCell(mediaItem: item).previewLayout(.fixed(width: 450, height: 100))
   }

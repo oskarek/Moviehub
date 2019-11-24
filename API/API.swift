@@ -26,7 +26,6 @@ struct SearchResults: Codable {
   let results: [MediaItem]
 }
 
-
 /// Hit the multi-search api endpoint. Returns a list of MediaItems, that matches the search query.
 /// - Parameter query: The string to search for.
 public func multiSearch(query: String) -> Effect<[MediaItem]?> {
@@ -56,9 +55,9 @@ private func imagePath(for mediaItem: MediaItem) -> String? {
 
 /// Fetch an image for a mediaItem to display in the search results.
 public func searchResultImage(for mediaItem: MediaItem) -> Effect<Data?> {
-  guard let p = imagePath(for: mediaItem) else { return .sync { nil } }
-  
-  let request = tmdbRequest(path: p)
+  guard let path = imagePath(for: mediaItem) else { return .sync { nil } }
+
+  let request = tmdbRequest(path: path)
   return URLSession.shared.dataTaskPublisher(for: request)
     .map { data, _ in data }
     .replaceError(with: nil)
