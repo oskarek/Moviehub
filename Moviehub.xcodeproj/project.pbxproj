@@ -62,6 +62,9 @@
 		FFC834722385E8B300D38FC7 /* MediaItem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC8344A2385E5B200D38FC7 /* MediaItem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFC834752385E8B800D38FC7 /* API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7C42383E3D400B87586 /* API.framework */; };
 		FFC834762385E8B800D38FC7 /* API.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7C42383E3D400B87586 /* API.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FFD55EEA238AB5F800219629 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD55EE7238AB5F700219629 /* Person.swift */; };
+		FFD55EEB238AB5F800219629 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD55EE8238AB5F700219629 /* Movie.swift */; };
+		FFD55EEC238AB5F800219629 /* TVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD55EE9238AB5F800219629 /* TVShow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -328,6 +331,9 @@
 		FFC834592385E5B200D38FC7 /* MediaItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItemTests.swift; sourceTree = "<group>"; };
 		FFC8345B2385E5B200D38FC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFC834672385E5D000D38FC7 /* MediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
+		FFD55EE7238AB5F700219629 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		FFD55EE8238AB5F700219629 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		FFD55EE9238AB5F800219629 /* TVShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -627,6 +633,9 @@
 				FFC8344C2385E5B200D38FC7 /* MediaItem.h */,
 				FFC8344D2385E5B200D38FC7 /* Info.plist */,
 				FFC834672385E5D000D38FC7 /* MediaItem.swift */,
+				FFD55EE8238AB5F700219629 /* Movie.swift */,
+				FFD55EE7238AB5F700219629 /* Person.swift */,
+				FFD55EE9238AB5F800219629 /* TVShow.swift */,
 			);
 			path = MediaItem;
 			sourceTree = "<group>";
@@ -1275,7 +1284,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFD55EEA238AB5F800219629 /* Person.swift in Sources */,
 				FFC834682385E5D000D38FC7 /* MediaItem.swift in Sources */,
+				FFD55EEC238AB5F800219629 /* TVShow.swift in Sources */,
+				FFD55EEB238AB5F800219629 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
