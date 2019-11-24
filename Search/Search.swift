@@ -67,19 +67,18 @@ public struct SearchView: View {
         )
       )
       self.store.value.searchResult.map { items in
-        List(items, id: \MediaItem.title) { item in
-          Text(item.title ?? "No title")
-        }
-      }
-      Spacer()
+        AnyView(List(items, rowContent: SearchResultCell.init))
+      } ?? AnyView(Spacer())
     }.navigationBarTitle("Search")
   }
 }
 
 struct SearchView_Previews: PreviewProvider {
+  static let searchResult = [dummyMediaItem]
+
   static var previews: some View {
     let store = Store<SearchState, SearchAction>(
-      initialValue: (searchText: "", searchResult: nil),
+      initialValue: (searchText: "", searchResult: searchResult),
       reducer: searchReducer
     )
     return NavigationView {
