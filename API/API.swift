@@ -3,16 +3,13 @@ import AppSecrets
 import Combine
 import MediaItem
 import ComposableArchitecture
+import Overture
 
 let apiKey = AppSecrets.themoviedbApiKey
 let baseUrl = URL(string: "https://api.themoviedb.org/4")!
 let imageBaseUrl = URL(string: "https://image.tmdb.org/t/p")!
 
-private let tmdbDecoder: JSONDecoder = {
-  let decoder = JSONDecoder()
-  decoder.keyDecodingStrategy = .convertFromSnakeCase
-  return decoder
-}()
+private let tmdbDecoder = update(JSONDecoder(), mut(\.keyDecodingStrategy, .convertFromSnakeCase))
 
 private func tmdbRequest(path: String, parameters: [String: String] = [:]) -> URLRequest {
   var components = URLComponents(string: path)!

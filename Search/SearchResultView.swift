@@ -1,11 +1,8 @@
 import SwiftUI
 import MediaItem
+import Overture
 
-private let dateFormatter: DateFormatter = {
-  let formatter = DateFormatter()
-  formatter.dateFormat = "yyyy-MM-dd"
-  return formatter
-}()
+private let dateFormatter = update(DateFormatter(), mut(\.dateFormat, "yyyy-MM-dd"))
 
 private func title(for mediaItem: MediaItem) -> String {
   switch mediaItem {

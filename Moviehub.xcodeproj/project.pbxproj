@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF7AA688238AE31500447827 /* Overture in Frameworks */ = {isa = PBXBuildFile; productRef = FF7AA687238AE31500447827 /* Overture */; };
 		FF89C74F2383CCDE00B87586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89C74E2383CCDE00B87586 /* AppDelegate.swift */; };
 		FF89C7512383CCDE00B87586 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89C7502383CCDE00B87586 /* SceneDelegate.swift */; };
 		FF89C7532383CCDE00B87586 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89C7522383CCDE00B87586 /* ContentView.swift */; };
@@ -41,6 +42,8 @@
 		FF89C8032383F93E00B87586 /* AppSecrets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7F42383F8A600B87586 /* AppSecrets.framework */; };
 		FF89C8042383F93E00B87586 /* AppSecrets.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7F42383F8A600B87586 /* AppSecrets.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF89C80B23840F9B00B87586 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89C80A23840F9B00B87586 /* SearchBar.swift */; };
+		FFA90035238AE7FF0079046B /* Overture in Frameworks */ = {isa = PBXBuildFile; productRef = FFA90034238AE7FF0079046B /* Overture */; };
+		FFA90037238AE8490079046B /* Overture in Frameworks */ = {isa = PBXBuildFile; productRef = FFA90036238AE8490079046B /* Overture */; };
 		FFAEDD912384271D0021DD59 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAEDD902384271D0021DD59 /* Store.swift */; };
 		FFC834532385E5B200D38FC7 /* MediaItem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC8344A2385E5B200D38FC7 /* MediaItem.framework */; };
 		FFC8345A2385E5B200D38FC7 /* MediaItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC834592385E5B200D38FC7 /* MediaItemTests.swift */; };
@@ -56,10 +59,10 @@
 		FFC834722385E8B300D38FC7 /* MediaItem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC8344A2385E5B200D38FC7 /* MediaItem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFC834752385E8B800D38FC7 /* API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7C42383E3D400B87586 /* API.framework */; };
 		FFC834762385E8B800D38FC7 /* API.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7C42383E3D400B87586 /* API.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FFD55EE6238AB17200219629 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD55EE5238AB17200219629 /* SearchResultView.swift */; };
 		FFD55EEA238AB5F800219629 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD55EE7238AB5F700219629 /* Person.swift */; };
 		FFD55EEB238AB5F800219629 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD55EE8238AB5F700219629 /* Movie.swift */; };
 		FFD55EEC238AB5F800219629 /* TVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD55EE9238AB5F800219629 /* TVShow.swift */; };
-		FFD55EE6238AB17200219629 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD55EE5238AB17200219629 /* SearchResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -297,10 +300,10 @@
 		FFC834592385E5B200D38FC7 /* MediaItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItemTests.swift; sourceTree = "<group>"; };
 		FFC8345B2385E5B200D38FC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFC834672385E5D000D38FC7 /* MediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
+		FFD55EE5238AB17200219629 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		FFD55EE7238AB5F700219629 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		FFD55EE8238AB5F700219629 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		FFD55EE9238AB5F800219629 /* TVShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShow.swift; sourceTree = "<group>"; };
-		FFD55EE5238AB17200219629 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +313,7 @@
 			files = (
 				FF89C7AF2383D26300B87586 /* Search.framework in Frameworks */,
 				FF89C7D92383E3D500B87586 /* API.framework in Frameworks */,
+				FF7AA688238AE31500447827 /* Overture in Frameworks */,
 				FF89C7FB2383F8A600B87586 /* AppSecrets.framework in Frameworks */,
 				FF89C78A2383CE5200B87586 /* ComposableArchitecture.framework in Frameworks */,
 				FFC8345F2385E5B200D38FC7 /* MediaItem.framework in Frameworks */,
@@ -342,6 +346,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA90035238AE7FF0079046B /* Overture in Frameworks */,
 				FFC834712385E8B300D38FC7 /* MediaItem.framework in Frameworks */,
 				FFC834752385E8B800D38FC7 /* API.framework in Frameworks */,
 				FF89C7BA2383E06000B87586 /* ComposableArchitecture.framework in Frameworks */,
@@ -360,6 +365,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA90037238AE8490079046B /* Overture in Frameworks */,
 				FFC8346D2385E80D00D38FC7 /* ComposableArchitecture.framework in Frameworks */,
 				FFC834692385E80900D38FC7 /* MediaItem.framework in Frameworks */,
 				FF89C8032383F93E00B87586 /* AppSecrets.framework in Frameworks */,
@@ -643,6 +649,9 @@
 				FFC8345E2385E5B200D38FC7 /* PBXTargetDependency */,
 			);
 			name = Moviehub;
+			packageProductDependencies = (
+				FF7AA687238AE31500447827 /* Overture */,
+			);
 			productName = Moviehub;
 			productReference = FF89C74B2383CCDE00B87586 /* Moviehub.app */;
 			productType = "com.apple.product-type.application";
@@ -720,6 +729,9 @@
 				FFC834782385E8B800D38FC7 /* PBXTargetDependency */,
 			);
 			name = Search;
+			packageProductDependencies = (
+				FFA90034238AE7FF0079046B /* Overture */,
+			);
 			productName = Search;
 			productReference = FF89C79A2383D26200B87586 /* Search.framework */;
 			productType = "com.apple.product-type.framework";
@@ -762,6 +774,9 @@
 				FFC834702385E80D00D38FC7 /* PBXTargetDependency */,
 			);
 			name = API;
+			packageProductDependencies = (
+				FFA90036238AE8490079046B /* Overture */,
+			);
 			productName = API;
 			productReference = FF89C7C42383E3D400B87586 /* API.framework */;
 			productType = "com.apple.product-type.framework";
@@ -905,6 +920,9 @@
 				Base,
 			);
 			mainGroup = FF89C7422383CCDE00B87586;
+			packageReferences = (
+				FF7AA686238AE31500447827 /* XCRemoteSwiftPackageReference "swift-overture" */,
+			);
 			productRefGroup = FF89C74C2383CCDE00B87586 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2035,6 +2053,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FF7AA686238AE31500447827 /* XCRemoteSwiftPackageReference "swift-overture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-overture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FF7AA687238AE31500447827 /* Overture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF7AA686238AE31500447827 /* XCRemoteSwiftPackageReference "swift-overture" */;
+			productName = Overture;
+		};
+		FFA90034238AE7FF0079046B /* Overture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF7AA686238AE31500447827 /* XCRemoteSwiftPackageReference "swift-overture" */;
+			productName = Overture;
+		};
+		FFA90036238AE8490079046B /* Overture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF7AA686238AE31500447827 /* XCRemoteSwiftPackageReference "swift-overture" */;
+			productName = Overture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FF89C7432383CCDE00B87586 /* Project object */;
 }
