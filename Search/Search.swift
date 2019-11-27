@@ -19,7 +19,7 @@ public enum SearchAction {
     }
   }
 
-  public var resultChanged: [MediaItem]?? {
+  public var resultChanged: [MediaItem]? {
     get {
       guard case let .resultChanged(value) = self else { return nil }
       return value
@@ -67,14 +67,14 @@ public struct SearchView: View {
         )
       )
       self.store.value.searchResult.map { items in
-        AnyView(List(items, rowContent: SearchResultCell.init))
+        AnyView(List { ForEach(items, content: SearchResultCell.init) })
       } ?? AnyView(Spacer())
     }.navigationBarTitle("Search")
   }
 }
 
 struct SearchView_Previews: PreviewProvider {
-  static let searchResult = [dummyMediaItem]
+  static let searchResult = Array(repeating: dummyMediaItem, count: 5)
 
   static var previews: some View {
     let store = Store<SearchState, SearchAction>(

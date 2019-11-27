@@ -2,7 +2,7 @@ import Foundation
 
 public let dummyMediaItem = MediaItem.movie(dummyMovie)
 
-public enum MediaItem {
+public enum MediaItem: Equatable {
   case movie(Movie)
   case tv(TVShow)
   case person(Person)
@@ -33,12 +33,16 @@ extension MediaItem: Codable {
   }
 
   public func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
     switch self {
     case let .movie(movie):
+      try container.encode(MediaType.movie, forKey: .mediaType)
       try movie.encode(to: encoder)
     case let .tv(tvShow):
+      try container.encode(MediaType.tv, forKey: .mediaType)
       try tvShow.encode(to: encoder)
     case let .person(person):
+      try container.encode(MediaType.person, forKey: .mediaType)
       try person.encode(to: encoder)
     }
   }
@@ -48,11 +52,11 @@ extension MediaItem: Identifiable {
   public var id: Int {
     switch self {
     case let .movie(movie):
-      return movie.id ?? 0
+      return movie.id
     case let .tv(tv):
-      return tv.id ?? 0
+      return tv.id
     case let .person(person):
-      return person.id ?? 0
+      return person.id
     }
   }
 }

@@ -4,12 +4,24 @@ import Combine
 import MediaItem
 import ComposableArchitecture
 import Overture
+import Utils
 
 let apiKey = AppSecrets.themoviedbApiKey
 let baseUrl = URL(string: "https://api.themoviedb.org/4")!
 let imageBaseUrl = URL(string: "https://image.tmdb.org/t/p")!
 
-private let tmdbDecoder = update(JSONDecoder(), mut(\.keyDecodingStrategy, .convertFromSnakeCase))
+public let tmdbDateFormatter = update(DateFormatter(), concat(
+  mut(\.dateFormat, "yyyy-MM-dd")
+))
+
+public let tmdbDecoder = update(JSONDecoder(), concat(
+  mut(\.keyDecodingStrategy, .convertFromSnakeCase),
+  mut(\.dateDecodingStrategy, .formatted(tmdbDateFormatter))
+))
+public let tmdbEncoder = update(JSONEncoder(), concat(
+  mut(\.keyEncodingStrategy, .convertToSnakeCase),
+  mut(\.dateEncodingStrategy, .formatted(tmdbDateFormatter))
+))
 
 private func tmdbRequest(path: String, parameters: [String: String] = [:]) -> URLRequest {
   let components = update(
@@ -22,8 +34,8 @@ private func tmdbRequest(path: String, parameters: [String: String] = [:]) -> UR
   return update(URLRequest(url: url), mut(\.allHTTPHeaderFields, headers))
 }
 
-struct SearchResults: Codable {
-  let results: [MediaItem]
+struct SearchResults: Decodable {
+  let results: [FailableDecodable<MediaItem>]
 }
 
 /// Hit the multi-search api endpoint. Returns a list of MediaItems, that matches the search query.
@@ -37,7 +49,7 @@ public func multiSearch(query: String) -> Effect<[MediaItem]?> {
   return URLSession.shared.dataTaskPublisher(for: request)
     .map { data, _ in data }
     .decode(type: SearchResults.self, decoder: tmdbDecoder)
-    .map { $0.results }
+    .map { $0.results.compactMap(get(\.base)) }
     .replaceError(with: nil)
     .eraseToEffect()
 }

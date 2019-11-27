@@ -1,34 +1,22 @@
-//
-//  MediaItemTests.swift
-//  MediaItemTests
-//
-//  Created by Oskar Ek on 2019-11-20.
-//  Copyright © 2019 Oskar Ek. All rights reserved.
-//
-
 import XCTest
 @testable import MediaItem
+import API
 
 class MediaItemTests: XCTestCase {
+  func testEncodeAndDecode() {
+    // Property: decode . encode == id
+    let item = dummyMediaItem
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    guard let data = try? tmdbEncoder.encode(item) else {
+      XCTFail("Couldn't encode MediaItem")
+      return
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    guard let decodedItem = try? tmdbDecoder.decode(MediaItem.self, from: data) else {
+      XCTFail("Couldn't decode MediaItem")
+      return
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+    XCTAssertEqual(item, decodedItem)
+  }
 }
