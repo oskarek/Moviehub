@@ -3,6 +3,7 @@ import SwiftUI
 import ComposableArchitecture
 import MediaItem
 import API
+import Environment
 
 public enum SearchAction {
   case textChanged(String)
@@ -38,7 +39,8 @@ public let searchReducer: Reducer<SearchState, SearchAction> = { state, action i
   case let .textChanged(searchString):
     state.searchText = searchString
     return [
-      multiSearch(query: state.searchText)
+      Current.apiProvider
+        .multiSearch(query: state.searchText)
         .map(SearchAction.resultChanged)
         .receive(on: DispatchQueue.main)
         .eraseToEffect()

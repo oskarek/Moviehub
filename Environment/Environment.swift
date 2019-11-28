@@ -9,12 +9,16 @@
 import Foundation
 import ComposableArchitecture
 import Overture
+import API
+import MediaItem
 
 public var Current = Environment()
 
 public struct Environment {
   /// The current calendar
   public var calendar: Calendar = .autoupdatingCurrent
+  /// The current TMDb api provider
+  public var apiProvider: TMDbProvider = LiveTMDbProvider()
 }
 
 // MARK: Convenience properties
@@ -32,9 +36,16 @@ extension Environment {
   /// A mock version of the environment, free from side-effects
   public var mock: Environment {
     Environment(
-      calendar: .mock
+      calendar: .mock,
+      apiProvider: MockTMDbProvider()
     )
   }
+}
+
+struct MockTMDbProvider: TMDbProvider {
+  func multiSearch(query: String) -> Effect<[MediaItem]?> { .sync { nil } }
+
+  func searchResultImage(for mediaItem: MediaItem) -> Effect<Data?> { .sync { nil } }
 }
 
 extension Calendar {

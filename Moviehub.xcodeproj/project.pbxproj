@@ -22,6 +22,10 @@
 		FF1DFF03238D2B050022A175 /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1DFED3238D18710022A175 /* Utils.framework */; };
 		FF1DFF04238D2B050022A175 /* Utils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF1DFED3238D18710022A175 /* Utils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF7AA688238AE31500447827 /* Overture in Frameworks */ = {isa = PBXBuildFile; productRef = FF7AA687238AE31500447827 /* Overture */; };
+		FF7B1634238FCB1B006159FE /* API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7C42383E3D400B87586 /* API.framework */; };
+		FF7B1635238FCB1B006159FE /* API.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7C42383E3D400B87586 /* API.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF7B1639238FCCBD006159FE /* MediaItem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC8344A2385E5B200D38FC7 /* MediaItem.framework */; };
+		FF7B163A238FCCBD006159FE /* MediaItem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC8344A2385E5B200D38FC7 /* MediaItem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF89C74F2383CCDE00B87586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89C74E2383CCDE00B87586 /* AppDelegate.swift */; };
 		FF89C7512383CCDE00B87586 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89C7502383CCDE00B87586 /* SceneDelegate.swift */; };
 		FF89C7532383CCDE00B87586 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89C7522383CCDE00B87586 /* ContentView.swift */; };
@@ -129,6 +133,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = FF1DFED2238D18710022A175;
 			remoteInfo = Utils;
+		};
+		FF7B1636238FCB1B006159FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF89C7432383CCDE00B87586 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF89C7C32383E3D400B87586;
+			remoteInfo = API;
+		};
+		FF7B163B238FCCBD006159FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF89C7432383CCDE00B87586 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FFC834492385E5B200D38FC7;
+			remoteInfo = MediaItem;
 		};
 		FF89C7622383CCDF00B87586 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -294,6 +312,18 @@
 			dstSubfolderSpec = 10;
 			files = (
 				FF1DFEF4238D197B0022A175 /* Utils.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF7B1638238FCB1B006159FE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FF7B163A238FCCBD006159FE /* MediaItem.framework in Embed Frameworks */,
+				FF7B1635238FCB1B006159FE /* API.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,6 +566,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFF0CF3C238FB0A800D7A270 /* Overture in Frameworks */,
+				FF7B1639238FCCBD006159FE /* MediaItem.framework in Frameworks */,
+				FF7B1634238FCB1B006159FE /* API.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1116,10 +1148,13 @@
 				FFF0CF29238EFF9900D7A270 /* Sources */,
 				FFF0CF2A238EFF9900D7A270 /* Frameworks */,
 				FFF0CF2B238EFF9900D7A270 /* Resources */,
+				FF7B1638238FCB1B006159FE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FF7B1637238FCB1B006159FE /* PBXTargetDependency */,
+				FF7B163C238FCCBD006159FE /* PBXTargetDependency */,
 			);
 			name = Environment;
 			packageProductDependencies = (
@@ -1546,6 +1581,16 @@
 			isa = PBXTargetDependency;
 			target = FF1DFED2238D18710022A175 /* Utils */;
 			targetProxy = FF1DFF05238D2B050022A175 /* PBXContainerItemProxy */;
+		};
+		FF7B1637238FCB1B006159FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF89C7C32383E3D400B87586 /* API */;
+			targetProxy = FF7B1636238FCB1B006159FE /* PBXContainerItemProxy */;
+		};
+		FF7B163C238FCCBD006159FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FFC834492385E5B200D38FC7 /* MediaItem */;
+			targetProxy = FF7B163B238FCCBD006159FE /* PBXContainerItemProxy */;
 		};
 		FF89C7632383CCDF00B87586 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
