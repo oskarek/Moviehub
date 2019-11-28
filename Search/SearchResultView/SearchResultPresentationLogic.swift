@@ -2,17 +2,18 @@ import Foundation
 import Overture
 import MediaItem
 import API
+import Environment
 
 extension MediaItem {
   var headline: String {
     switch self {
     case let .movie(movie):
       let title = movie.title
-      let year = "\(tmdbDateFormatter.calendar.component(.year, from: movie.releaseDate))"
+      let year = "\(Current.calendar.component(.year, from: movie.releaseDate))"
       return "\(title) (\(year))"
     case let .tv(tvShow):
       let name = tvShow.name
-      let year = "\(tmdbDateFormatter.calendar.component(.year, from: tvShow.firstAirDate))"
+      let year = "\(Current.calendar.component(.year, from: tvShow.firstAirDate))"
       return "\(name) (\(year))"
     case let .person(person):
       return person.name
