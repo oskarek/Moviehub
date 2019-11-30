@@ -25,7 +25,6 @@ struct SearchResultCell: View {
 
 struct SearchResultCell_Previews: PreviewProvider {
   static let items = [MediaItem.movie(dummyMovie), .tv(dummyTVShow), .person(dummyPerson)]
-  static let imageData = UIColor.lightGray.image(.init(width: 92, height: 138)).pngData()!
 
   static var previews: some View {
     Group {

@@ -5,6 +5,7 @@ import API
 import Environment
 import SwiftUI
 import Utils
+import Styleguide
 
 extension MediaItem {
   var headline: String {
@@ -39,12 +40,8 @@ extension MediaItem {
   }
 }
 
-private func emptyImage() -> Image {
-  let uiImage = UIColor.lightGray
-    .withAlphaComponent(0.5)
-    .image(.init(width: 92, height: 138))
-  return Image(uiImage: uiImage).resizable()
-}
+private let emptyImage: some View =
+  Rectangle().fill().foregroundColor(MoviehubColor.emptyImage)
 
 private func clipped<V: View>(_ view: V, to size: CGSize) -> AnyView {
   return AnyView(view
@@ -57,10 +54,10 @@ private func clipped<V: View>(_ view: V, to size: CGSize) -> AnyView {
 func imageView(for: MediaItem, inState state: ImageState, ofSize size: CGSize) -> some View {
   switch state {
   case .empty:
-    return clipped(emptyImage(), to: size)
+    return clipped(emptyImage, to: size)
   case .loading:
     let stack = ZStack(alignment: .center) {
-      emptyImage()
+      emptyImage
 
       ActivityIndicator()
         .foregroundColor(.primary)
