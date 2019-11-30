@@ -85,7 +85,7 @@ public struct SearchView: View {
         AnyView(List {
           ForEach(items) { item in
             SearchResultCell(
-              imageState: self.store.value.itemImageStates[item.id] ?? .empty,
+              imageState: self.store.value.itemImageStates[item.id] ?? .loading,
               mediaItem: item
             )
           }
