@@ -82,6 +82,8 @@
 		FFEE2B3D239291DD0079BBC9 /* Types.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFEE2B12239291300079BBC9 /* Types.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFEE2B40239292050079BBC9 /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1DFED3238D18710022A175 /* Utils.framework */; };
 		FFEE2B41239292050079BBC9 /* Utils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF1DFED3238D18710022A175 /* Utils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FFEE2B4923929FF80079BBC9 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEE2B4823929FF80079BBC9 /* ActivityIndicator.swift */; };
+		FFEE2B4B2392A3230079BBC9 /* ImageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEE2B4A2392A3230079BBC9 /* ImageState.swift */; };
 		FFF0CF31238EFF9900D7A270 /* Environment.h in Headers */ = {isa = PBXBuildFile; fileRef = FFF0CF2F238EFF9900D7A270 /* Environment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FFF0CF34238EFF9900D7A270 /* Environment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF0CF2D238EFF9900D7A270 /* Environment.framework */; };
 		FFF0CF35238EFF9900D7A270 /* Environment.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFF0CF2D238EFF9900D7A270 /* Environment.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -438,6 +440,8 @@
 		FFEE2B15239291300079BBC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFEE2B1A239291300079BBC9 /* TypesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TypesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFEE2B23239291300079BBC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFEE2B4823929FF80079BBC9 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		FFEE2B4A2392A3230079BBC9 /* ImageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageState.swift; sourceTree = "<group>"; };
 		FFF0CF2D238EFF9900D7A270 /* Environment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Environment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF0CF2F238EFF9900D7A270 /* Environment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
 		FFF0CF30238EFF9900D7A270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -577,6 +581,7 @@
 		FF1DFED4238D18710022A175 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FFEE2B4523929E8D0079BBC9 /* CustomViews */,
 				FF1DFEF0238D18790022A175 /* Extensions */,
 				FF1DFED5238D18710022A175 /* Utils.h */,
 				FF1DFED6238D18710022A175 /* Info.plist */,
@@ -784,6 +789,7 @@
 				FFD55EE8238AB5F700219629 /* Movie.swift */,
 				FFD55EE7238AB5F700219629 /* Person.swift */,
 				FFD55EE9238AB5F800219629 /* TVShow.swift */,
+				FFEE2B4A2392A3230079BBC9 /* ImageState.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -795,6 +801,14 @@
 				FFEE2B23239291300079BBC9 /* Info.plist */,
 			);
 			path = TypesTests;
+			sourceTree = "<group>";
+		};
+		FFEE2B4523929E8D0079BBC9 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				FFEE2B4823929FF80079BBC9 /* ActivityIndicator.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		FFF0CF2E238EFF9900D7A270 /* Environment */ = {
@@ -1429,6 +1443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFEE2B4923929FF80079BBC9 /* ActivityIndicator.swift in Sources */,
 				FF1DFEF2238D188D0022A175 /* DateExtensions.swift in Sources */,
 				FF1DFF02238D2AC30022A175 /* CustomDecodables.swift in Sources */,
 				FF1DFEFD238D1B460022A175 /* UIColorExtensions.swift in Sources */,
@@ -1527,6 +1542,7 @@
 			files = (
 				FFEE2B302392915E0079BBC9 /* TVShow.swift in Sources */,
 				FFEE2B322392915E0079BBC9 /* MediaItem.swift in Sources */,
+				FFEE2B4B2392A3230079BBC9 /* ImageState.swift in Sources */,
 				FFEE2B2F2392915E0079BBC9 /* Person.swift in Sources */,
 				FFEE2B312392915E0079BBC9 /* Movie.swift in Sources */,
 			);

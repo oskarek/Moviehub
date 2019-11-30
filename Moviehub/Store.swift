@@ -6,15 +6,16 @@ import Search
 struct AppState {
   var searchText: String = ""
   var searchResult: [MediaItem]?
+  var searchItemImageStates: [MediaItem.ID: ImageState] = [:]
 }
 
 extension AppState {
   var search: SearchState {
     get {
-      (searchText: self.searchText, searchResult: self.searchResult)
+      SearchState(query: self.searchText, items: self.searchResult, itemImageStates: self.searchItemImageStates)
     }
     set {
-      (self.searchText, self.searchResult) = newValue
+      (self.searchText, self.searchResult, self.searchItemImageStates) = newValue
     }
   }
 }
