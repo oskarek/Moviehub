@@ -1,5 +1,5 @@
 import XCTest
-@testable import MediaItem
+@testable import Types
 import API
 
 class MediaItemTests: XCTestCase {

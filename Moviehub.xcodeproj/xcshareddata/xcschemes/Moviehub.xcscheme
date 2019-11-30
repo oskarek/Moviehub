@@ -98,6 +98,16 @@
                ReferencedContainer = "container:Moviehub.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FFEE2B19239291300079BBC9"
+               BuildableName = "TypesTests.xctest"
+               BlueprintName = "TypesTests"
+               ReferencedContainer = "container:Moviehub.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

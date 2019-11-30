@@ -1,6 +1,6 @@
 import Foundation
 import Overture
-import MediaItem
+import Types
 import API
 import Environment
 

@@ -10,7 +10,7 @@ import Foundation
 import ComposableArchitecture
 import Overture
 import API
-import MediaItem
+import Types
 
 public var Current = Environment()
 

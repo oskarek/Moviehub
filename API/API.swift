@@ -1,7 +1,7 @@
 import Foundation
 import AppSecrets
 import Combine
-import MediaItem
+import Types
 import ComposableArchitecture
 import Overture
 import Utils

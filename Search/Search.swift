@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 import ComposableArchitecture
-import MediaItem
+import Types
 import API
 import Environment
 

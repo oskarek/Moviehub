@@ -1,6 +1,6 @@
 import Foundation
 import ComposableArchitecture
-import MediaItem
+import Types
 import Search
 
 struct AppState {
