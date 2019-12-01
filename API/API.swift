@@ -6,18 +6,18 @@ import ComposableArchitecture
 import Overture
 import Utils
 
-public let tmdbDateFormatter = update(DateFormatter(), concat(
-  mut(\.dateFormat, "yyyy-MM-dd")
-))
+public let tmdbDateFormatter = update(DateFormatter()) {
+  $0.dateFormat = "yyyy-MM-dd"
+}
 
-public let tmdbDecoder = update(JSONDecoder(), concat(
-  mut(\.keyDecodingStrategy, .convertFromSnakeCase),
-  mut(\.dateDecodingStrategy, .formatted(tmdbDateFormatter))
-))
-public let tmdbEncoder = update(JSONEncoder(), concat(
-  mut(\.keyEncodingStrategy, .convertToSnakeCase),
-  mut(\.dateEncodingStrategy, .formatted(tmdbDateFormatter))
-))
+public let tmdbDecoder = update(JSONDecoder()) {
+  $0.keyDecodingStrategy = .convertFromSnakeCase
+  $0.dateDecodingStrategy = .formatted(tmdbDateFormatter)
+}
+public let tmdbEncoder = update(JSONEncoder()) {
+  $0.keyEncodingStrategy = .convertToSnakeCase
+  $0.dateEncodingStrategy = .formatted(tmdbDateFormatter)
+}
 
 struct SearchResults: Decodable {
   let results: [FailableDecodable<MediaItem>]
@@ -34,10 +34,9 @@ public struct LiveTMDbProvider: TMDbProvider {
   let imageBaseUrl = URL(string: "https://image.tmdb.org/t/p")!
 
   private func tmdbRequest(path: String, parameters: [String: String] = [:]) -> URLRequest {
-    let components = update(
-      URLComponents(string: path)!,
-      mut(\.queryItems, parameters.map(URLQueryItem.init))
-    )
+    let components = update(URLComponents(string: path)!) {
+      $0.queryItems = parameters.map(URLQueryItem.init)
+    }
 
     let headers = ["Authorization": "Bearer " + apiKey]
     let url = components.url(relativeTo: baseUrl)!
