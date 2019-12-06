@@ -4,6 +4,7 @@ import ComposableArchitecture
 import Types
 import API
 import Environment
+import Utils
 
 public enum SearchAction {
   case textChanged(String)
@@ -33,11 +34,17 @@ public enum SearchAction {
   }
 }
 
-public typealias SearchState = (query: String, items: [MediaItem]?, itemImageStates: [MediaItem.ID: ImageState])
+public typealias SearchState = (
+  query: String,
+  items: [MediaItem]?,
+  itemImageStates: [MediaItem.ID: ImageState],
+  isLoading: Bool
+)
 
 public let searchReducer: Reducer<SearchState, SearchAction> = { state, action in
   switch action {
   case let .textChanged(query):
+    state.isLoading = true
     state.query = query
     return [
       Current.apiProvider
@@ -47,6 +54,7 @@ public let searchReducer: Reducer<SearchState, SearchAction> = { state, action i
         .eraseToEffect()
     ]
   case let .resultChanged(items):
+    state.isLoading = false
     state.items = items
     return items?.map { item in
       Current.apiProvider
@@ -81,16 +89,25 @@ public struct SearchView: View {
           set: { self.store.send(.textChanged($0)) }
         )
       )
-      self.store.value.items.map { items in
-        AnyView(List {
-          ForEach(items) { item in
-            SearchResultCell(
-              imageState: self.store.value.itemImageStates[item.id] ?? .loading,
-              mediaItem: item
-            )
-          }
-        })
-      } ?? AnyView(Spacer())
+      if self.store.value.isLoading && self.store.value.items == nil {
+        VStack {
+          ActivityIndicator()
+            .frame(width: 15, height: 15, alignment: .center)
+            .padding(50)
+          Spacer()
+        }
+      } else {
+        self.store.value.items.map { items in
+          AnyView(List {
+            ForEach(items) { item in
+              SearchResultCell(
+                imageState: self.store.value.itemImageStates[item.id] ?? .loading,
+                mediaItem: item
+              )
+            }
+          })
+        } ?? AnyView(Spacer())
+      }
     }.navigationBarTitle("Search")
   }
 }
@@ -100,7 +117,12 @@ struct SearchView_Previews: PreviewProvider {
 
   static var previews: some View {
     let store = Store<SearchState, SearchAction>(
-      initialValue: SearchState(query: "", items: searchResult, itemImageStates: [:]),
+      initialValue: SearchState(
+        query: "",
+        items: searchResult,
+        itemImageStates: [:],
+        isLoading: false
+      ),
       reducer: searchReducer
     )
     return NavigationView {

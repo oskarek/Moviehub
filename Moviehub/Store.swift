@@ -7,15 +7,24 @@ struct AppState {
   var searchText: String = ""
   var searchResult: [MediaItem]?
   var searchItemImageStates: [MediaItem.ID: ImageState] = [:]
+  var isSearching: Bool = false
 }
 
 extension AppState {
   var search: SearchState {
     get {
-      SearchState(query: self.searchText, items: self.searchResult, itemImageStates: self.searchItemImageStates)
+      SearchState(
+        query: self.searchText,
+        items: self.searchResult,
+        itemImageStates: self.searchItemImageStates,
+        isLoading: self.isSearching
+      )
     }
     set {
-      (self.searchText, self.searchResult, self.searchItemImageStates) = newValue
+      ( self.searchText,
+        self.searchResult,
+        self.searchItemImageStates,
+        self.isSearching ) = newValue
     }
   }
 }
