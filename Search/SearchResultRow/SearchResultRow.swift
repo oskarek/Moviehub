@@ -3,7 +3,7 @@ import Types
 import Overture
 import Utils
 
-struct SearchResultCell: View {
+struct SearchResultRow: View {
   let imageState: ImageState
   let mediaItem: MediaItem
   var body: some View {
@@ -23,13 +23,13 @@ struct SearchResultCell: View {
   }
 }
 
-struct SearchResultCell_Previews: PreviewProvider {
+struct SearchResultRow_Previews: PreviewProvider {
   static let items = [MediaItem.movie(dummyMovie), .tv(dummyTVShow), .person(dummyPerson)]
 
   static var previews: some View {
     Group {
       ForEach(items) { item in
-        SearchResultCell(imageState: .empty, mediaItem: item)
+        SearchResultRow(imageState: .empty, mediaItem: item)
           .previewLayout(.sizeThatFits)
           .previewDisplayName(item.headline)
       }

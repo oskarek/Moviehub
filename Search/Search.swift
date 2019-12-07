@@ -10,41 +10,19 @@ public enum SearchAction {
   case textChanged(String)
   case resultChanged([MediaItem]?)
   case setImageState(for: MediaItem, to: ImageState)
-
-  public var textChanged: String? {
-    get {
-      guard case let .textChanged(value) = self else { return nil }
-      return value
-    }
-    set {
-      guard case .textChanged = self, let newValue = newValue else { return }
-      self = .textChanged(newValue)
-    }
-  }
-
-  public var resultChanged: [MediaItem]? {
-    get {
-      guard case let .resultChanged(value) = self else { return nil }
-      return value
-    }
-    set {
-      guard case .resultChanged = self, let newValue = newValue else { return }
-      self = .resultChanged(newValue)
-    }
-  }
 }
 
 public typealias SearchState = (
   query: String,
   items: [MediaItem]?,
   itemImageStates: [MediaItem.ID: ImageState],
-  isLoading: Bool
+  shouldShowSpinner: Bool
 )
 
 public let searchReducer: Reducer<SearchState, SearchAction> = { state, action in
   switch action {
   case let .textChanged(query):
-    state.isLoading = true
+    state.shouldShowSpinner = state.items == nil
     state.query = query
     return [
       Current.apiProvider
@@ -54,7 +32,7 @@ public let searchReducer: Reducer<SearchState, SearchAction> = { state, action i
         .eraseToEffect()
     ]
   case let .resultChanged(items):
-    state.isLoading = false
+    state.shouldShowSpinner = false
     state.items = items
     return items?.map { item in
       Current.apiProvider
@@ -73,7 +51,6 @@ public let searchReducer: Reducer<SearchState, SearchAction> = { state, action i
 }
 
 public struct SearchView: View {
-  @State var searchText: String = ""
   @ObservedObject var store: Store<SearchState, SearchAction>
 
   public init(store: Store<SearchState, SearchAction>) {
@@ -89,24 +66,18 @@ public struct SearchView: View {
           set: { self.store.send(.textChanged($0)) }
         )
       )
-      if self.store.value.isLoading && self.store.value.items == nil {
+      if self.store.value.shouldShowSpinner {
         VStack {
           ActivityIndicator()
-            .frame(width: 15, height: 15, alignment: .center)
+            .frame(width: 15, height: 15)
             .padding(50)
           Spacer()
         }
       } else {
-        self.store.value.items.map { items in
-          AnyView(List {
-            ForEach(items) { item in
-              SearchResultCell(
-                imageState: self.store.value.itemImageStates[item.id] ?? .loading,
-                mediaItem: item
-              )
-            }
-          })
-        } ?? AnyView(Spacer())
+        SearchResultView(
+          items: self.store.value.items,
+          imageStates: self.store.value.itemImageStates
+        )
       }
     }.navigationBarTitle("Search")
   }
@@ -121,7 +92,7 @@ struct SearchView_Previews: PreviewProvider {
         query: "",
         items: searchResult,
         itemImageStates: [:],
-        isLoading: false
+        shouldShowSpinner: false
       ),
       reducer: searchReducer
     )
