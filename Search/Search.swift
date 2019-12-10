@@ -6,7 +6,7 @@ import API
 import Environment
 import Utils
 
-public enum SearchAction {
+public enum SearchAction: Equatable {
   case textChanged(String)
   case resultChanged([MediaItem]?)
   case setImageState(for: MediaItem, to: ImageState)
@@ -45,6 +45,7 @@ public let searchReducer: Reducer<SearchState, SearchAction> = { state, action i
     ]
   case let .resultChanged(items):
     state.shouldShowSpinner = false
+    state.itemImageStates = [:]
     state.items = items
     return items?.map { item in
       Current.apiProvider
