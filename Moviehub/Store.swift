@@ -21,10 +21,10 @@ extension AppState {
       )
     }
     set {
-      ( self.searchText,
-        self.searchResult,
-        self.searchItemImageStates,
-        self.shouldShowSearchSpinner ) = newValue
+      self.searchText = newValue.query
+      self.searchResult = newValue.items
+      self.searchItemImageStates = newValue.itemImageStates
+      self.shouldShowSearchSpinner = newValue.shouldShowSpinner
     }
   }
 }

@@ -12,12 +12,24 @@ public enum SearchAction {
   case setImageState(for: MediaItem, to: ImageState)
 }
 
-public typealias SearchState = (
-  query: String,
-  items: [MediaItem]?,
-  itemImageStates: [MediaItem.ID: ImageState],
-  shouldShowSpinner: Bool
-)
+public struct SearchState: Equatable {
+  public var query: String
+  public var items: [MediaItem]?
+  public var itemImageStates: [MediaItem.ID: ImageState]
+  public var shouldShowSpinner: Bool
+
+  public init(
+    query: String,
+    items: [MediaItem]?,
+    itemImageStates: [MediaItem.ID: ImageState],
+    shouldShowSpinner: Bool
+  ) {
+    self.query = query
+    self.items = items
+    self.itemImageStates = itemImageStates
+    self.shouldShowSpinner = shouldShowSpinner
+  }
+}
 
 public let searchReducer: Reducer<SearchState, SearchAction> = { state, action in
   switch action {
