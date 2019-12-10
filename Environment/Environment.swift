@@ -34,7 +34,7 @@ extension Environment {
 
 extension Environment {
   /// A mock version of the environment, free from side-effects
-  public var mock: Environment {
+  public static var mock: Environment {
     Environment(
       calendar: .mock,
       apiProvider: MockTMDbProvider()
