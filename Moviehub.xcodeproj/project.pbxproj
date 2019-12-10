@@ -19,6 +19,12 @@
 		FF1DFF03238D2B050022A175 /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1DFED3238D18710022A175 /* Utils.framework */; };
 		FF1DFF04238D2B050022A175 /* Utils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF1DFED3238D18710022A175 /* Utils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF3BD87C239C0EF300DAC125 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3BD87B239C0EF300DAC125 /* SearchResultView.swift */; };
+		FF697F6B239F865A00EC27CF /* ComposableArchitectureTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = FF697F69239F865A00EC27CF /* ComposableArchitectureTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF697F6E239F865A00EC27CF /* ComposableArchitectureTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF697F67239F865A00EC27CF /* ComposableArchitectureTesting.framework */; };
+		FF697F6F239F865A00EC27CF /* ComposableArchitectureTesting.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF697F67239F865A00EC27CF /* ComposableArchitectureTesting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF697F73239F86A600EC27CF /* ComposableArchitecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7752383CE5200B87586 /* ComposableArchitecture.framework */; };
+		FF697F74239F86A600EC27CF /* ComposableArchitecture.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7752383CE5200B87586 /* ComposableArchitecture.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF697F79239F86BC00EC27CF /* ComposableArchitectureTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF697F78239F86BC00EC27CF /* ComposableArchitectureTesting.swift */; };
 		FF7AA688238AE31500447827 /* Overture in Frameworks */ = {isa = PBXBuildFile; productRef = FF7AA687238AE31500447827 /* Overture */; };
 		FF7B1634238FCB1B006159FE /* API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7C42383E3D400B87586 /* API.framework */; };
 		FF7B1635238FCB1B006159FE /* API.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7C42383E3D400B87586 /* API.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -134,6 +140,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = FF1DFED2238D18710022A175;
 			remoteInfo = Utils;
+		};
+		FF697F6C239F865A00EC27CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF89C7432383CCDE00B87586 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF697F66239F865A00EC27CF;
+			remoteInfo = ComposableArchitectureTesting;
+		};
+		FF697F75239F86A600EC27CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF89C7432383CCDE00B87586 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF89C7742383CE5200B87586;
+			remoteInfo = ComposableArchitecture;
 		};
 		FF7B1636238FCB1B006159FE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -327,6 +347,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		FF697F77239F86A700EC27CF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FF697F74239F86A600EC27CF /* ComposableArchitecture.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF7B1638238FCB1B006159FE /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -349,6 +380,7 @@
 				FF89C7B02383D26300B87586 /* Search.framework in Embed Frameworks */,
 				FF89C7DA2383E3D500B87586 /* API.framework in Embed Frameworks */,
 				FFF0CF35238EFF9900D7A270 /* Environment.framework in Embed Frameworks */,
+				FF697F6F239F865A00EC27CF /* ComposableArchitectureTesting.framework in Embed Frameworks */,
 				FF89C7FC2383F8A600B87586 /* AppSecrets.framework in Embed Frameworks */,
 				FF1DFEE9238D18710022A175 /* Utils.framework in Embed Frameworks */,
 				FF89C78B2383CE5200B87586 /* ComposableArchitecture.framework in Embed Frameworks */,
@@ -410,6 +442,10 @@
 		FF1DFEF1238D188D0022A175 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		FF1DFF01238D2AC30022A175 /* CustomDecodables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDecodables.swift; sourceTree = "<group>"; };
 		FF3BD87B239C0EF300DAC125 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
+		FF697F67239F865A00EC27CF /* ComposableArchitectureTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ComposableArchitectureTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF697F69239F865A00EC27CF /* ComposableArchitectureTesting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposableArchitectureTesting.h; sourceTree = "<group>"; };
+		FF697F6A239F865A00EC27CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF697F78239F86BC00EC27CF /* ComposableArchitectureTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposableArchitectureTesting.swift; sourceTree = "<group>"; };
 		FF89C74B2383CCDE00B87586 /* Moviehub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moviehub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF89C74E2383CCDE00B87586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF89C7502383CCDE00B87586 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -490,6 +526,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FF697F64239F865A00EC27CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF697F73239F86A600EC27CF /* ComposableArchitecture.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF89C7482383CCDE00B87586 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -499,6 +543,7 @@
 				FF7AA688238AE31500447827 /* Overture in Frameworks */,
 				FFDA01EC2392FA5F007F6CC3 /* Styleguide.framework in Frameworks */,
 				FF89C7FB2383F8A600B87586 /* AppSecrets.framework in Frameworks */,
+				FF697F6E239F865A00EC27CF /* ComposableArchitectureTesting.framework in Frameworks */,
 				FF1DFEE8238D18710022A175 /* Utils.framework in Frameworks */,
 				FF89C78A2383CE5200B87586 /* ComposableArchitecture.framework in Frameworks */,
 				FFEE2B27239291300079BBC9 /* Types.framework in Frameworks */,
@@ -642,6 +687,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		FF697F68239F865A00EC27CF /* ComposableArchitectureTesting */ = {
+			isa = PBXGroup;
+			children = (
+				FF697F69239F865A00EC27CF /* ComposableArchitectureTesting.h */,
+				FF697F6A239F865A00EC27CF /* Info.plist */,
+				FF697F78239F86BC00EC27CF /* ComposableArchitectureTesting.swift */,
+			);
+			path = ComposableArchitectureTesting;
+			sourceTree = "<group>";
+		};
 		FF89C7422383CCDE00B87586 = {
 			isa = PBXGroup;
 			children = (
@@ -661,6 +716,7 @@
 				FFEE2B13239291300079BBC9 /* Types */,
 				FFEE2B20239291300079BBC9 /* TypesTests */,
 				FFDA01E62392FA5F007F6CC3 /* Styleguide */,
+				FF697F68239F865A00EC27CF /* ComposableArchitectureTesting */,
 				FF89C74C2383CCDE00B87586 /* Products */,
 				FF89C7B92383E06000B87586 /* Frameworks */,
 			);
@@ -686,6 +742,7 @@
 				FFEE2B12239291300079BBC9 /* Types.framework */,
 				FFEE2B1A239291300079BBC9 /* TypesTests.xctest */,
 				FFDA01E52392FA5F007F6CC3 /* Styleguide.framework */,
+				FF697F67239F865A00EC27CF /* ComposableArchitectureTesting.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -879,6 +936,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FF697F62239F865A00EC27CF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF697F6B239F865A00EC27CF /* ComposableArchitectureTesting.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF89C7702383CE5200B87586 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -975,6 +1040,26 @@
 			productReference = FF1DFEDB238D18710022A175 /* UtilsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		FF697F66239F865A00EC27CF /* ComposableArchitectureTesting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF697F72239F865A00EC27CF /* Build configuration list for PBXNativeTarget "ComposableArchitectureTesting" */;
+			buildPhases = (
+				FF697F62239F865A00EC27CF /* Headers */,
+				FF697F63239F865A00EC27CF /* Sources */,
+				FF697F64239F865A00EC27CF /* Frameworks */,
+				FF697F65239F865A00EC27CF /* Resources */,
+				FF697F77239F86A700EC27CF /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF697F76239F86A600EC27CF /* PBXTargetDependency */,
+			);
+			name = ComposableArchitectureTesting;
+			productName = ComposableArchitectureTesting;
+			productReference = FF697F67239F865A00EC27CF /* ComposableArchitectureTesting.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		FF89C74A2383CCDE00B87586 /* Moviehub */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF89C76A2383CCDF00B87586 /* Build configuration list for PBXNativeTarget "Moviehub" */;
@@ -996,6 +1081,7 @@
 				FFF0CF33238EFF9900D7A270 /* PBXTargetDependency */,
 				FFEE2B26239291300079BBC9 /* PBXTargetDependency */,
 				FFDA01EB2392FA5F007F6CC3 /* PBXTargetDependency */,
+				FF697F6D239F865A00EC27CF /* PBXTargetDependency */,
 			);
 			name = Moviehub;
 			packageProductDependencies = (
@@ -1271,6 +1357,10 @@
 						CreatedOnToolsVersion = 11.2.1;
 						TestTargetID = FF89C74A2383CCDE00B87586;
 					};
+					FF697F66239F865A00EC27CF = {
+						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
+					};
 					FF89C74A2383CCDE00B87586 = {
 						CreatedOnToolsVersion = 11.1;
 					};
@@ -1354,6 +1444,7 @@
 				FFEE2B11239291300079BBC9 /* Types */,
 				FFEE2B19239291300079BBC9 /* TypesTests */,
 				FFDA01E42392FA5F007F6CC3 /* Styleguide */,
+				FF697F66239F865A00EC27CF /* ComposableArchitectureTesting */,
 			);
 		};
 /* End PBXProject section */
@@ -1367,6 +1458,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		FF1DFED9238D18710022A175 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF697F65239F865A00EC27CF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1544,6 +1642,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FF697F63239F865A00EC27CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF697F79239F86BC00EC27CF /* ComposableArchitectureTesting.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF89C7472383CCDE00B87586 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1686,6 +1792,16 @@
 			isa = PBXTargetDependency;
 			target = FF1DFED2238D18710022A175 /* Utils */;
 			targetProxy = FF1DFF05238D2B050022A175 /* PBXContainerItemProxy */;
+		};
+		FF697F6D239F865A00EC27CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF697F66239F865A00EC27CF /* ComposableArchitectureTesting */;
+			targetProxy = FF697F6C239F865A00EC27CF /* PBXContainerItemProxy */;
+		};
+		FF697F76239F86A600EC27CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF89C7742383CE5200B87586 /* ComposableArchitecture */;
+			targetProxy = FF697F75239F86A600EC27CF /* PBXContainerItemProxy */;
 		};
 		FF7B1637238FCB1B006159FE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1938,6 +2054,67 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moviehub.app/Moviehub";
+			};
+			name = Release;
+		};
+		FF697F70239F865A00EC27CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6XNB472P6E;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ComposableArchitectureTesting/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.OskarApps.ComposableArchitectureTesting;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FF697F71239F865A00EC27CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6XNB472P6E;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ComposableArchitectureTesting/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.OskarApps.ComposableArchitectureTesting;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -2748,6 +2925,15 @@
 			buildConfigurations = (
 				FF1DFEEE238D18710022A175 /* Debug */,
 				FF1DFEEF238D18710022A175 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF697F72239F865A00EC27CF /* Build configuration list for PBXNativeTarget "ComposableArchitectureTesting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF697F70239F865A00EC27CF /* Debug */,
+				FF697F71239F865A00EC27CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
