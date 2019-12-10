@@ -48,13 +48,13 @@ public let searchReducer: Reducer<SearchState, SearchAction> = { state, action i
     state.items = items
     return items?.map { item in
       Current.apiProvider
-      .searchResultImage(for: item)
-      .map { data in
-        let state = data.map(ImageState.loaded) ?? .empty
-        return SearchAction.setImageState(for: item, to: state)
-      }
-      .receive(on: DispatchQueue.main)
-      .eraseToEffect()
+        .searchResultImage(for: item)
+        .map { data in
+          let state = data.map(ImageState.loaded) ?? .empty
+          return SearchAction.setImageState(for: item, to: state)
+        }
+        .receive(on: DispatchQueue.main)
+        .eraseToEffect()
     } ?? []
   case let .setImageState(mediaItem, imageState):
     state.itemImageStates[mediaItem.id] = imageState
