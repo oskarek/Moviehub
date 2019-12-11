@@ -12,13 +12,25 @@ import Overture
 import API
 import Types
 
-public var Current = Environment()
+public var Current: Environment = .live
 
 public struct Environment {
   /// The current calendar
-  public var calendar: Calendar = .autoupdatingCurrent
+  public var calendar: Calendar
   /// The current TMDb api provider
-  public var apiProvider: TMDbProvider = LiveTMDbProvider()
+  public var apiProvider: TMDbProvider
+}
+
+// MARK: Live
+
+extension Environment {
+  /// A mock version of the environment, free from side-effects
+  public static var live: Environment {
+    Environment(
+      calendar: .autoupdatingCurrent,
+      apiProvider: LiveTMDbProvider()
+    )
+  }
 }
 
 // MARK: Convenience properties
