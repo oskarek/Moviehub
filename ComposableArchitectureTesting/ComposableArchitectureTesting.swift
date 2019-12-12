@@ -1,7 +1,8 @@
 import ComposableArchitecture
 import XCTest
+import Environment
 
-public enum StepType {
+enum StepType {
   case send
   case receive
 }
@@ -13,7 +14,7 @@ public struct Step<Value, Action> {
   let file: StaticString
   let line: UInt
 
-  public init(
+  init(
     _ type: StepType,
     _ action: Action,
     file: StaticString = #file,
@@ -25,6 +26,26 @@ public struct Step<Value, Action> {
     self.update = update
     self.file = file
     self.line = line
+  }
+}
+
+public extension Step {
+  static func send(
+    _ action: Action,
+    file: StaticString = #file,
+    line: UInt = #line,
+    _ update: @escaping (inout Value) -> Void
+  ) -> Step<Value, Action> {
+    .init(.send, action, file: file, line: line, update)
+  }
+
+  static func receive(
+    _ action: Action,
+    file: StaticString = #file,
+    line: UInt = #line,
+    _ update: @escaping (inout Value) -> Void
+  ) -> Step<Value, Action> {
+    .init(.receive, action, file: file, line: line, update)
   }
 }
 
@@ -74,5 +95,11 @@ public func assert<Value: Equatable, Action: Equatable>(
   }
   if !effects.isEmpty {
     XCTFail("Assertion failed to handle \(effects.count) pending effect(s)", file: file, line: line)
+  }
+}
+
+open class ComposableArchitectureTestCase: XCTestCase {
+  public override class func setUp() {
+    Current = .mock
   }
 }

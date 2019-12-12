@@ -21,12 +21,7 @@ struct DummyProvider: TMDbProvider {
   }
 }
 
-class SearchTests: XCTestCase {
-  override class func setUp() {
-    super.setUp()
-    Current = .mock
-  }
-
+class SearchTests: ComposableArchitectureTestCase {
   func testSearchHappyFlow() {
     Current.apiProvider = DummyProvider(shouldFail: false)
 
@@ -39,19 +34,19 @@ class SearchTests: XCTestCase {
       ),
       reducer: searchReducer,
       steps:
-      Step(.send, .textChanged("I")) {
+      .send(.textChanged("I")) {
         $0.query = "I"
         $0.shouldShowSpinner = true
       },
-      Step(.receive, .resultChanged([.movie(dummyMovie)])) {
+      .receive(.resultChanged([.movie(dummyMovie)])) {
         $0.items = [.movie(dummyMovie)]
         $0.shouldShowSpinner = false
       },
-      Step(.receive, .setImageState(for: .movie(dummyMovie), to: .loaded(Data()))) {
+      .receive(.setImageState(for: .movie(dummyMovie), to: .loaded(Data()))) {
         $0.itemImageStates[dummyMovie.id] = .loaded(Data())
       },
-      Step(.send, .textChanged("")) { $0.query = "" },
-      Step(.receive, .resultChanged(nil)) {
+      .send(.textChanged("")) { $0.query = "" },
+      .receive(.resultChanged(nil)) {
         $0.itemImageStates = [:]
         $0.items = nil
       }
@@ -70,19 +65,19 @@ class SearchTests: XCTestCase {
       ),
       reducer: searchReducer,
       steps:
-      Step(.send, .textChanged("I")) {
+      .send(.textChanged("I")) {
         $0.query = "I"
         $0.shouldShowSpinner = true
       },
-      Step(.receive, .resultChanged(nil)) {
+      .receive(.resultChanged(nil)) {
         $0.items = nil
         $0.shouldShowSpinner = false
       },
-      Step(.send, .textChanged("")) {
+      .send(.textChanged("")) {
         $0.query = ""
         $0.shouldShowSpinner = true
       },
-      Step(.receive, .resultChanged(nil)) {
+      .receive(.resultChanged(nil)) {
         $0.itemImageStates = [:]
         $0.items = nil
         $0.shouldShowSpinner = false

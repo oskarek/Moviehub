@@ -28,6 +28,8 @@
 		FF7AA688238AE31500447827 /* Overture in Frameworks */ = {isa = PBXBuildFile; productRef = FF7AA687238AE31500447827 /* Overture */; };
 		FF7B1634238FCB1B006159FE /* API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7C42383E3D400B87586 /* API.framework */; };
 		FF7B1635238FCB1B006159FE /* API.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7C42383E3D400B87586 /* API.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF87EC5923A2B13E00208686 /* Environment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF0CF2D238EFF9900D7A270 /* Environment.framework */; };
+		FF87EC5A23A2B13E00208686 /* Environment.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFF0CF2D238EFF9900D7A270 /* Environment.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF89C74F2383CCDE00B87586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89C74E2383CCDE00B87586 /* AppDelegate.swift */; };
 		FF89C7512383CCDE00B87586 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89C7502383CCDE00B87586 /* SceneDelegate.swift */; };
 		FF89C7532383CCDE00B87586 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89C7522383CCDE00B87586 /* ContentView.swift */; };
@@ -161,6 +163,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = FF89C7C32383E3D400B87586;
 			remoteInfo = API;
+		};
+		FF87EC5B23A2B13E00208686 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF89C7432383CCDE00B87586 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FFF0CF2C238EFF9900D7A270;
+			remoteInfo = Environment;
 		};
 		FF89C7622383CCDF00B87586 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -353,6 +362,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				FF87EC5A23A2B13E00208686 /* Environment.framework in Embed Frameworks */,
 				FF697F74239F86A600EC27CF /* ComposableArchitecture.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -530,6 +540,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF87EC5923A2B13E00208686 /* Environment.framework in Frameworks */,
 				FF697F73239F86A600EC27CF /* ComposableArchitecture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1054,6 +1065,7 @@
 			);
 			dependencies = (
 				FF697F76239F86A600EC27CF /* PBXTargetDependency */,
+				FF87EC5C23A2B13E00208686 /* PBXTargetDependency */,
 			);
 			name = ComposableArchitectureTesting;
 			productName = ComposableArchitectureTesting;
@@ -1807,6 +1819,11 @@
 			isa = PBXTargetDependency;
 			target = FF89C7C32383E3D400B87586 /* API */;
 			targetProxy = FF7B1636238FCB1B006159FE /* PBXContainerItemProxy */;
+		};
+		FF87EC5C23A2B13E00208686 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FFF0CF2C238EFF9900D7A270 /* Environment */;
+			targetProxy = FF87EC5B23A2B13E00208686 /* PBXContainerItemProxy */;
 		};
 		FF89C7632383CCDF00B87586 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
