@@ -38,7 +38,7 @@ public let searchReducer: Reducer<SearchState, SearchAction> = { state, action i
     state.query = query
     return [
       Current.apiProvider
-        .multiSearch(query: state.query)
+        .multiSearch(state.query)
         .map(SearchAction.resultChanged)
         .receive(on: DispatchQueue.main)
         .eraseToEffect()
@@ -49,7 +49,7 @@ public let searchReducer: Reducer<SearchState, SearchAction> = { state, action i
     state.items = items
     return items?.map { item in
       Current.apiProvider
-        .searchResultImage(for: item)
+        .searchResultImage(item)
         .map { data in
           let state = data.map(ImageState.loaded) ?? .empty
           return SearchAction.setImageState(for: item, to: state)

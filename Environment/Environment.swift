@@ -28,7 +28,7 @@ extension Environment {
   public static var live: Environment {
     Environment(
       calendar: .autoupdatingCurrent,
-      apiProvider: LiveTMDbProvider()
+      apiProvider: liveTMDbProvider
     )
   }
 }
@@ -49,15 +49,12 @@ extension Environment {
   public static var mock: Environment {
     Environment(
       calendar: .mock,
-      apiProvider: MockTMDbProvider()
+      apiProvider: TMDbProvider(
+        multiSearch: { _ in .sync { nil } },
+        searchResultImage: { _ in .sync { nil } }
+      )
     )
   }
-}
-
-struct MockTMDbProvider: TMDbProvider {
-  func multiSearch(query: String) -> Effect<[MediaItem]?> { .sync { nil } }
-
-  func searchResultImage(for mediaItem: MediaItem) -> Effect<Data?> { .sync { nil } }
 }
 
 extension Calendar {

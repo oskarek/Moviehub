@@ -7,23 +7,12 @@ import Environment
 import API
 import Overture
 
-struct DummyProvider: TMDbProvider {
-  let shouldFail: Bool
-
-  func multiSearch(query: String) -> Effect<[MediaItem]?> {
-    self.shouldFail
-      ? .sync { nil }
-      : .sync { query.isEmpty ? nil : [.movie(dummyMovie)] }
-  }
-
-  func searchResultImage(for mediaItem: MediaItem) -> Effect<Data?> {
-    .sync { self.shouldFail ? nil : Data() }
-  }
-}
-
 class SearchTests: ComposableArchitectureTestCase {
   func testSearchHappyFlow() {
-    Current.apiProvider = DummyProvider(shouldFail: false)
+    Current.apiProvider = TMDbProvider(
+      multiSearch: { query in .sync { query.isEmpty ? nil : [.movie(dummyMovie)] } },
+      searchResultImage: { _ in .sync { Data() } }
+    )
 
     assert(
       initialValue: SearchState(
@@ -54,7 +43,10 @@ class SearchTests: ComposableArchitectureTestCase {
   }
 
   func testSearchUnhappyFlow() {
-    Current.apiProvider = DummyProvider(shouldFail: true)
+    Current.apiProvider = TMDbProvider(
+      multiSearch: { _ in .sync { nil } },
+      searchResultImage: { _ in .sync { nil } }
+    )
 
     assert(
       initialValue: SearchState(
