@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FF18900F23A50FFC00E4CAE9 /* TestSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = FF18900D23A50FFC00E4CAE9 /* TestSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FF18901223A50FFC00E4CAE9 /* TestSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF18900B23A50FFC00E4CAE9 /* TestSupport.framework */; };
-		FF18901323A50FFC00E4CAE9 /* TestSupport.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF18900B23A50FFC00E4CAE9 /* TestSupport.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF18901823A5100F00E4CAE9 /* MoviehubTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18901723A5100F00E4CAE9 /* MoviehubTestCase.swift */; };
 		FF18901923A5102A00E4CAE9 /* Environment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF0CF2D238EFF9900D7A270 /* Environment.framework */; };
 		FF18901A23A5102A00E4CAE9 /* Environment.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFF0CF2D238EFF9900D7A270 /* Environment.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -26,8 +24,6 @@
 		FF1DFF04238D2B050022A175 /* Utils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF1DFED3238D18710022A175 /* Utils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF3BD87C239C0EF300DAC125 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3BD87B239C0EF300DAC125 /* SearchResultView.swift */; };
 		FF697F6B239F865A00EC27CF /* ComposableArchitectureTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = FF697F69239F865A00EC27CF /* ComposableArchitectureTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FF697F6E239F865A00EC27CF /* ComposableArchitectureTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF697F67239F865A00EC27CF /* ComposableArchitectureTesting.framework */; };
-		FF697F6F239F865A00EC27CF /* ComposableArchitectureTesting.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF697F67239F865A00EC27CF /* ComposableArchitectureTesting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF697F73239F86A600EC27CF /* ComposableArchitecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7752383CE5200B87586 /* ComposableArchitecture.framework */; };
 		FF697F74239F86A600EC27CF /* ComposableArchitecture.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7752383CE5200B87586 /* ComposableArchitecture.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF697F79239F86BC00EC27CF /* ComposableArchitectureTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF697F78239F86BC00EC27CF /* ComposableArchitectureTesting.swift */; };
@@ -114,13 +110,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FF18901023A50FFC00E4CAE9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FF89C7432383CCDE00B87586 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FF18900A23A50FFC00E4CAE9;
-			remoteInfo = TestSupport;
-		};
 		FF18901B23A5102A00E4CAE9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FF89C7432383CCDE00B87586 /* Project object */;
@@ -163,13 +152,6 @@
 			remoteGlobalIDString = FF1DFED2238D18710022A175;
 			remoteInfo = Utils;
 		};
-		FF697F6C239F865A00EC27CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FF89C7432383CCDE00B87586 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FF697F66239F865A00EC27CF;
-			remoteInfo = ComposableArchitectureTesting;
-		};
 		FF697F75239F86A600EC27CF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FF89C7432383CCDE00B87586 /* Project object */;
@@ -183,6 +165,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = FF89C7C32383E3D400B87586;
 			remoteInfo = API;
+		};
+		FF81CC6F23A5A45600F9182D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF89C7432383CCDE00B87586 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF697F66239F865A00EC27CF;
+			remoteInfo = ComposableArchitectureTesting;
+		};
+		FF81CC7123A5A45D00F9182D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF89C7432383CCDE00B87586 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF18900A23A50FFC00E4CAE9;
+			remoteInfo = TestSupport;
 		};
 		FF87EC5B23A2B13E00208686 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -417,12 +413,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FF18901323A50FFC00E4CAE9 /* TestSupport.framework in Embed Frameworks */,
 				FFEE2B28239291300079BBC9 /* Types.framework in Embed Frameworks */,
 				FF89C7B02383D26300B87586 /* Search.framework in Embed Frameworks */,
 				FF89C7DA2383E3D500B87586 /* API.framework in Embed Frameworks */,
 				FFF0CF35238EFF9900D7A270 /* Environment.framework in Embed Frameworks */,
-				FF697F6F239F865A00EC27CF /* ComposableArchitectureTesting.framework in Embed Frameworks */,
 				FF89C7FC2383F8A600B87586 /* AppSecrets.framework in Embed Frameworks */,
 				FF1DFEE9238D18710022A175 /* Utils.framework in Embed Frameworks */,
 				FF89C78B2383CE5200B87586 /* ComposableArchitecture.framework in Embed Frameworks */,
@@ -593,13 +587,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF18901223A50FFC00E4CAE9 /* TestSupport.framework in Frameworks */,
 				FF89C7AF2383D26300B87586 /* Search.framework in Frameworks */,
 				FF89C7D92383E3D500B87586 /* API.framework in Frameworks */,
 				FF7AA688238AE31500447827 /* Overture in Frameworks */,
 				FFDA01EC2392FA5F007F6CC3 /* Styleguide.framework in Frameworks */,
 				FF89C7FB2383F8A600B87586 /* AppSecrets.framework in Frameworks */,
-				FF697F6E239F865A00EC27CF /* ComposableArchitectureTesting.framework in Frameworks */,
 				FF1DFEE8238D18710022A175 /* Utils.framework in Frameworks */,
 				FF89C78A2383CE5200B87586 /* ComposableArchitecture.framework in Frameworks */,
 				FFEE2B27239291300079BBC9 /* Types.framework in Frameworks */,
@@ -1178,8 +1170,6 @@
 				FFF0CF33238EFF9900D7A270 /* PBXTargetDependency */,
 				FFEE2B26239291300079BBC9 /* PBXTargetDependency */,
 				FFDA01EB2392FA5F007F6CC3 /* PBXTargetDependency */,
-				FF697F6D239F865A00EC27CF /* PBXTargetDependency */,
-				FF18901123A50FFC00E4CAE9 /* PBXTargetDependency */,
 			);
 			name = Moviehub;
 			packageProductDependencies = (
@@ -1283,6 +1273,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				FF81CC7223A5A45D00F9182D /* PBXTargetDependency */,
+				FF81CC7023A5A45600F9182D /* PBXTargetDependency */,
 				FF89C7A52383D26200B87586 /* PBXTargetDependency */,
 				FF89C7A72383D26200B87586 /* PBXTargetDependency */,
 			);
@@ -1886,11 +1878,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FF18901123A50FFC00E4CAE9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FF18900A23A50FFC00E4CAE9 /* TestSupport */;
-			targetProxy = FF18901023A50FFC00E4CAE9 /* PBXContainerItemProxy */;
-		};
 		FF18901C23A5102A00E4CAE9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FFF0CF2C238EFF9900D7A270 /* Environment */;
@@ -1921,11 +1908,6 @@
 			target = FF1DFED2238D18710022A175 /* Utils */;
 			targetProxy = FF1DFF05238D2B050022A175 /* PBXContainerItemProxy */;
 		};
-		FF697F6D239F865A00EC27CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FF697F66239F865A00EC27CF /* ComposableArchitectureTesting */;
-			targetProxy = FF697F6C239F865A00EC27CF /* PBXContainerItemProxy */;
-		};
 		FF697F76239F86A600EC27CF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FF89C7742383CE5200B87586 /* ComposableArchitecture */;
@@ -1935,6 +1917,16 @@
 			isa = PBXTargetDependency;
 			target = FF89C7C32383E3D400B87586 /* API */;
 			targetProxy = FF7B1636238FCB1B006159FE /* PBXContainerItemProxy */;
+		};
+		FF81CC7023A5A45600F9182D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF697F66239F865A00EC27CF /* ComposableArchitectureTesting */;
+			targetProxy = FF81CC6F23A5A45600F9182D /* PBXContainerItemProxy */;
+		};
+		FF81CC7223A5A45D00F9182D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF18900A23A50FFC00E4CAE9 /* TestSupport */;
+			targetProxy = FF81CC7123A5A45D00F9182D /* PBXContainerItemProxy */;
 		};
 		FF87EC5C23A2B13E00208686 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
