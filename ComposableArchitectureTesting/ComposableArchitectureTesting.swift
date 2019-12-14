@@ -1,6 +1,7 @@
 import ComposableArchitecture
 import XCTest
 import Environment
+import Combine
 
 enum StepType {
   case send
@@ -77,13 +78,14 @@ public func assert<Value: Equatable, Action: Equatable>(
       let effect = effects.removeFirst()
       var action: Action!
       let receivedCompletion = XCTestExpectation(description: "receivedCompletion")
-      _ = effect.sink(
+      let cancellable = effect.sink(
         receiveCompletion: { _ in
           receivedCompletion.fulfill()
       },
         receiveValue: { action = $0 }
       )
       if XCTWaiter.wait(for: [receivedCompletion], timeout: 0.01) != .completed {
+        cancellable.cancel()
         XCTFail("Timed out waiting for the effect to complete", file: step.file, line: step.line)
       }
       XCTAssertEqual(action, step.action, file: step.file, line: step.line)
