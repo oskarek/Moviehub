@@ -99,9 +99,3 @@ public func assert<Value: Equatable, Action: Equatable>(
     XCTFail("Assertion failed to handle \(effects.count) pending effect(s)", file: file, line: line)
   }
 }
-
-open class ComposableArchitectureTestCase: XCTestCase {
-  public override class func setUp() {
-    Current = .mock
-  }
-}

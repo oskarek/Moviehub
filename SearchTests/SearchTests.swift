@@ -3,11 +3,12 @@ import XCTest
 import ComposableArchitecture
 import Types
 import ComposableArchitectureTesting
+import TestSupport
 import Environment
 import API
 import Overture
 
-class SearchTests: ComposableArchitectureTestCase {
+class SearchTests: MoviehubTestCase {
   func testSearchHappyFlow() {
     Current.apiProvider = TMDbProvider(
       multiSearch: { query in .sync { query.isEmpty ? nil : [.movie(dummyMovie)] } },
