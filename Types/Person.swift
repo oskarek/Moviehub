@@ -10,13 +10,13 @@ public let dummyPerson = Person(
 public struct Person: Codable, Identifiable, Equatable {
   public let profilePath: String?
   public let id: Int
-  public let knownFor: [MediaItem]?
+  public let knownFor: [MediaItem]
   public let name: String
 
   public init(
     profilePath: String?,
     id: Int,
-    knownFor: [MediaItem]?,
+    knownFor: [MediaItem],
     name: String
   ) {
     self.profilePath = profilePath

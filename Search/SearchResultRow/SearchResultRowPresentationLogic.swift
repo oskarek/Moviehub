@@ -30,12 +30,7 @@ extension MediaItem {
     case let .tv(tvShow):
       return tvShow.overview ?? ""
     case let .person(person):
-      guard let knownFor = person.knownFor else {
-        return "Not known for anything. A loser."
-      }
-
-      let knownForString = knownFor.map(get(\.headline)).joined(separator: ", ")
-      return "Known for: \(knownForString)"
+      return person.knownFor.map(get(\.headline)).joined(separator: ", ")
     }
   }
 }
