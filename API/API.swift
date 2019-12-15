@@ -37,35 +37,42 @@ public struct TMDbProvider {
   public var multiSearch: (_ query: String) -> Effect<[MediaItem]?>
   /// Fetch an image for a mediaItem to display in the search results.
   public var searchResultImage: (_ mediaItem: MediaItem) -> Effect<Data?>
+  /// Get extended information about a movie, via its id
+  public var movie: (_ movieId: Movie.ID) -> Effect<ExtendedMovie?>
 
   public init(
     multiSearch: @escaping (_ query: String) -> Effect<[MediaItem]?>,
-    searchResultImage: @escaping (_ mediaItem: MediaItem) -> Effect<Data?>) {
+    searchResultImage: @escaping (_ mediaItem: MediaItem) -> Effect<Data?>,
+    movie: @escaping (_ movieId: Movie.ID) -> Effect<ExtendedMovie?>) {
     self.multiSearch = multiSearch
     self.searchResultImage = searchResultImage
+    self.movie = movie
   }
 }
 
 // MARK: Live implementation of TMDbProver
 
-private func tmdbRequest(path: String, parameters: [String: String] = [:]) -> URLRequest {
+private func tmdbData(
+  path: String,
+  parameters: [String: String] = [:]
+) -> AnyPublisher<Data, URLError> {
   let components = update(URLComponents(string: path)!) {
     $0.queryItems = parameters.map(URLQueryItem.init)
   }
 
   let headers = ["Authorization": "Bearer " + apiKey]
   let url = components.url(relativeTo: baseUrl)!
-  return update(URLRequest(url: url), mut(\.allHTTPHeaderFields, headers))
+  let request = update(URLRequest(url: url), mut(\.allHTTPHeaderFields, headers))
+  return URLSession.shared.dataTaskPublisher(for: request)
+    .map { data, _ in data }
+    .eraseToAnyPublisher()
 }
 
 func multiSearch(query: String) -> Effect<[MediaItem]?> {
   guard !query.isEmpty else { return .sync { nil } }
 
   let path = baseUrl.absoluteString + "/search/multi"
-  let request = tmdbRequest(path: path, parameters: ["query": query])
-
-  return URLSession.shared.dataTaskPublisher(for: request)
-    .map { data, _ in data }
+  return tmdbData(path: path, parameters: ["query": query])
     .decode(type: SearchResults.self, decoder: tmdbDecoder)
     .map { $0.results.compactMap(get(\.base)) }
     .replaceError(with: nil)
@@ -86,14 +93,23 @@ private func imagePath(for mediaItem: MediaItem) -> String? {
 func searchResultImage(for mediaItem: MediaItem) -> Effect<Data?> {
   guard let path = imagePath(for: mediaItem) else { return .sync { nil } }
 
-  let request = tmdbRequest(path: path)
-  return URLSession.shared.dataTaskPublisher(for: request)
-    .map { data, _ in data }
+  return tmdbData(path: path)
+    .map(Optional.some)
+    .replaceError(with: nil)
+    .eraseToEffect()
+}
+
+func movie(for movieId: Movie.ID) -> Effect<ExtendedMovie?> {
+  let path = baseUrl.absoluteString + "/movie/\(movieId)"
+
+  return tmdbData(path: path)
+    .decode(type: ExtendedMovie?.self, decoder: tmdbDecoder)
     .replaceError(with: nil)
     .eraseToEffect()
 }
 
 public let liveTMDbProvider = TMDbProvider(
-  multiSearch: multiSearch,
-  searchResultImage: searchResultImage
+  multiSearch: multiSearch(query:),
+  searchResultImage: searchResultImage(for:),
+  movie: movie(for:)
 )

@@ -10,10 +10,10 @@ import Overture
 
 class SearchTests: MoviehubTestCase {
   func testSearchHappyFlow() {
-    Current.apiProvider = TMDbProvider(
-      multiSearch: { query in .sync { query.isEmpty ? nil : [.movie(dummyMovie)] } },
-      searchResultImage: { _ in .sync { Data() } }
-    )
+    update(&Current.apiProvider) {
+      $0.multiSearch = { query in .sync { query.isEmpty ? nil : [.movie(dummyMovie)] } }
+      $0.searchResultImage = { _ in .sync { Data() } }
+    }
 
     assert(
       initialValue: SearchState(
@@ -44,10 +44,10 @@ class SearchTests: MoviehubTestCase {
   }
 
   func testSearchUnhappyFlow() {
-    Current.apiProvider = TMDbProvider(
-      multiSearch: { _ in .sync { nil } },
-      searchResultImage: { _ in .sync { nil } }
-    )
+    update(&Current.apiProvider) {
+      $0.multiSearch = { _ in .sync { nil } }
+      $0.searchResultImage = { _ in .sync { nil } }
+    }
 
     assert(
       initialValue: SearchState(

@@ -51,7 +51,8 @@ extension Environment {
       calendar: .mock,
       apiProvider: TMDbProvider(
         multiSearch: { _ in .sync { nil } },
-        searchResultImage: { _ in .sync { nil } }
+        searchResultImage: { _ in .sync { nil } },
+        movie: { _ in .sync { nil } }
       )
     )
   }

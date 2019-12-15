@@ -30,6 +30,7 @@
 		FF7AA688238AE31500447827 /* Overture in Frameworks */ = {isa = PBXBuildFile; productRef = FF7AA687238AE31500447827 /* Overture */; };
 		FF7B1634238FCB1B006159FE /* API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7C42383E3D400B87586 /* API.framework */; };
 		FF7B1635238FCB1B006159FE /* API.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF89C7C42383E3D400B87586 /* API.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF81CC7423A5A59800F9182D /* ExtendedMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF81CC7323A5A59800F9182D /* ExtendedMovie.swift */; };
 		FF87EC5923A2B13E00208686 /* Environment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF0CF2D238EFF9900D7A270 /* Environment.framework */; };
 		FF87EC5A23A2B13E00208686 /* Environment.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFF0CF2D238EFF9900D7A270 /* Environment.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF89C74F2383CCDE00B87586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89C74E2383CCDE00B87586 /* AppDelegate.swift */; };
@@ -486,6 +487,7 @@
 		FF697F69239F865A00EC27CF /* ComposableArchitectureTesting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposableArchitectureTesting.h; sourceTree = "<group>"; };
 		FF697F6A239F865A00EC27CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF697F78239F86BC00EC27CF /* ComposableArchitectureTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposableArchitectureTesting.swift; sourceTree = "<group>"; };
+		FF81CC7323A5A59800F9182D /* ExtendedMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedMovie.swift; sourceTree = "<group>"; };
 		FF89C74B2383CCDE00B87586 /* Moviehub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moviehub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF89C74E2383CCDE00B87586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF89C7502383CCDE00B87586 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -954,6 +956,7 @@
 				FFD55EE7238AB5F700219629 /* Person.swift */,
 				FFD55EE9238AB5F800219629 /* TVShow.swift */,
 				FFEE2B4A2392A3230079BBC9 /* ImageState.swift */,
+				FF81CC7323A5A59800F9182D /* ExtendedMovie.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -1856,6 +1859,7 @@
 				FFEE2B4B2392A3230079BBC9 /* ImageState.swift in Sources */,
 				FFEE2B2F2392915E0079BBC9 /* Person.swift in Sources */,
 				FFEE2B312392915E0079BBC9 /* Movie.swift in Sources */,
+				FF81CC7423A5A59800F9182D /* ExtendedMovie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

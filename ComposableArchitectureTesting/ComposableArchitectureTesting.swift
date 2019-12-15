@@ -1,6 +1,5 @@
 import ComposableArchitecture
 import XCTest
-import Environment
 import Combine
 
 enum StepType {
