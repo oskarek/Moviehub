@@ -3,7 +3,7 @@ import Types
 
 struct SearchResultView: View {
   let items: [MediaItem]?
-  let imageStates: [MediaItem.ID: ImageState]
+  let imageStates: [MediaItem.ID: LoadingState<Data>]
   var body: some View {
     self.items.map { items in
       AnyView(List {

@@ -100,7 +100,7 @@
 		FFEE2B40239292050079BBC9 /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1DFED3238D18710022A175 /* Utils.framework */; };
 		FFEE2B41239292050079BBC9 /* Utils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF1DFED3238D18710022A175 /* Utils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFEE2B4923929FF80079BBC9 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEE2B4823929FF80079BBC9 /* ActivityIndicator.swift */; };
-		FFEE2B4B2392A3230079BBC9 /* ImageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEE2B4A2392A3230079BBC9 /* ImageState.swift */; };
+		FFEE2B4B2392A3230079BBC9 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEE2B4A2392A3230079BBC9 /* LoadingState.swift */; };
 		FFF0CF31238EFF9900D7A270 /* Environment.h in Headers */ = {isa = PBXBuildFile; fileRef = FFF0CF2F238EFF9900D7A270 /* Environment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FFF0CF34238EFF9900D7A270 /* Environment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF0CF2D238EFF9900D7A270 /* Environment.framework */; };
 		FFF0CF35238EFF9900D7A270 /* Environment.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFF0CF2D238EFF9900D7A270 /* Environment.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -545,7 +545,7 @@
 		FFEE2B1A239291300079BBC9 /* TypesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TypesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFEE2B23239291300079BBC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFEE2B4823929FF80079BBC9 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
-		FFEE2B4A2392A3230079BBC9 /* ImageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageState.swift; sourceTree = "<group>"; };
+		FFEE2B4A2392A3230079BBC9 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 		FFF0CF2D238EFF9900D7A270 /* Environment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Environment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF0CF2F238EFF9900D7A270 /* Environment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
 		FFF0CF30238EFF9900D7A270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -955,7 +955,7 @@
 				FFD55EE8238AB5F700219629 /* Movie.swift */,
 				FFD55EE7238AB5F700219629 /* Person.swift */,
 				FFD55EE9238AB5F800219629 /* TVShow.swift */,
-				FFEE2B4A2392A3230079BBC9 /* ImageState.swift */,
+				FFEE2B4A2392A3230079BBC9 /* LoadingState.swift */,
 				FF81CC7323A5A59800F9182D /* ExtendedMovie.swift */,
 			);
 			path = Types;
@@ -1856,7 +1856,7 @@
 			files = (
 				FFEE2B302392915E0079BBC9 /* TVShow.swift in Sources */,
 				FFEE2B322392915E0079BBC9 /* MediaItem.swift in Sources */,
-				FFEE2B4B2392A3230079BBC9 /* ImageState.swift in Sources */,
+				FFEE2B4B2392A3230079BBC9 /* LoadingState.swift in Sources */,
 				FFEE2B2F2392915E0079BBC9 /* Person.swift in Sources */,
 				FFEE2B312392915E0079BBC9 /* Movie.swift in Sources */,
 				FF81CC7423A5A59800F9182D /* ExtendedMovie.swift in Sources */,

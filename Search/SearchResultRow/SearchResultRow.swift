@@ -4,7 +4,7 @@ import Overture
 import Utils
 
 struct SearchResultRow: View {
-  let imageState: ImageState
+  let imageState: LoadingState<Data>
   let mediaItem: MediaItem
   var body: some View {
     HStack {

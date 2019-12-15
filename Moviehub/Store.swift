@@ -6,7 +6,7 @@ import Search
 struct AppState {
   var searchText: String = ""
   var searchResult: [MediaItem]?
-  var searchItemImageStates: [MediaItem.ID: ImageState] = [:]
+  var searchItemImageStates: [MediaItem.ID: LoadingState<Data>] = [:]
   var shouldShowSearchSpinner: Bool = false
 }
 

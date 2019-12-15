@@ -9,19 +9,19 @@ import Utils
 public enum SearchAction: Equatable {
   case textChanged(String)
   case resultChanged([MediaItem]?)
-  case setImageState(for: MediaItem, to: ImageState)
+  case setImageState(for: MediaItem, to: LoadingState<Data>)
 }
 
 public struct SearchState: Equatable {
   public var query: String
   public var items: [MediaItem]?
-  public var itemImageStates: [MediaItem.ID: ImageState]
+  public var itemImageStates: [MediaItem.ID: LoadingState<Data>]
   public var shouldShowSpinner: Bool
 
   public init(
     query: String,
     items: [MediaItem]?,
-    itemImageStates: [MediaItem.ID: ImageState],
+    itemImageStates: [MediaItem.ID: LoadingState<Data>],
     shouldShowSpinner: Bool
   ) {
     self.query = query
@@ -51,7 +51,7 @@ public let searchReducer: Reducer<SearchState, SearchAction> = { state, action i
       Current.apiProvider
         .searchResultImage(item)
         .map { data in
-          let state = data.map(ImageState.loaded) ?? .empty
+          let state = data.map(LoadingState.loaded) ?? .empty
           return SearchAction.setImageState(for: item, to: state)
         }
         .receive(on: DispatchQueue.main)
