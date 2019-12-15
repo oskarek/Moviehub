@@ -9,7 +9,7 @@ import Utils
 // MARK: Configurations constants
 
 let apiKey = AppSecrets.themoviedbApiKey
-let baseUrl = URL(string: "https://api.themoviedb.org/4")!
+let baseUrl = URL(string: "https://api.themoviedb.org/3")!
 let imageBaseUrl = URL(string: "https://image.tmdb.org/t/p")!
 
 public let tmdbDateFormatter = update(DateFormatter()) {
