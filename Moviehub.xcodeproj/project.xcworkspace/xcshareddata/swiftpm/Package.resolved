@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "ComposableArchitecture",
+        "repositoryURL": "https://github.com/oskarek/ComposableArchitecture.git",
+        "state": {
+          "branch": "master",
+          "revision": "80af27e9de376181fd3676db1330539334bcfcd4",
+          "version": null
+        }
+      },
+      {
         "package": "Overture",
         "repositoryURL": "https://github.com/pointfreeco/swift-overture.git",
         "state": {
