@@ -11,13 +11,9 @@ extension MediaItem {
   var headline: String {
     switch self {
     case let .movie(movie):
-      let title = movie.title
-      let year = "\(Current.calendar.component(.year, from: movie.releaseDate))"
-      return "\(title) (\(year))"
+      return "\(movie.title) (\(movie.releaseDate.year))"
     case let .tv(tvShow):
-      let name = tvShow.name
-      let year = "\(Current.calendar.component(.year, from: tvShow.firstAirDate))"
-      return "\(name) (\(year))"
+      return "\(tvShow.name) (\(tvShow.firstAirDate.year))"
     case let .person(person):
       return person.name
     }
