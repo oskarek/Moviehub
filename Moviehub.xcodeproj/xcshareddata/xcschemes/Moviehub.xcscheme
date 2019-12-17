@@ -42,16 +42,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FF89C77C2383CE5200B87586"
-               BuildableName = "ComposableArchitectureTests.xctest"
-               BlueprintName = "ComposableArchitectureTests"
-               ReferencedContainer = "container:Moviehub.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "FF89C7A12383D26200B87586"
                BuildableName = "SearchTests.xctest"
                BlueprintName = "SearchTests"
@@ -65,26 +55,6 @@
                BlueprintIdentifier = "FF89C7CB2383E3D500B87586"
                BuildableName = "APITests.xctest"
                BlueprintName = "APITests"
-               ReferencedContainer = "container:Moviehub.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FFC834512385E5B200D38FC7"
-               BuildableName = "MediaItemTests.xctest"
-               BlueprintName = "MediaItemTests"
-               ReferencedContainer = "container:Moviehub.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FF1DFEB6238D162A0022A175"
-               BuildableName = "ModelsTests.xctest"
-               BlueprintName = "ModelsTests"
                ReferencedContainer = "container:Moviehub.xcodeproj">
             </BuildableReference>
          </TestableReference>
