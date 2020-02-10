@@ -16,5 +16,5 @@ jobs:
         mkdir -p Generated
         Tools/sourcery --sources Moviehub --templates Templates/AppSecrets.stencil --output Generated --args themoviedbApiKey=\"$THEMOVIEDB_API_KEY\"
         echo "THEMOVIEDB_API_KEY = \"$THEMOVIEDB_API_KEY\"" > BuildConfig/release.xcconfig
-        xcodebuild clean test -project Moviehub.xcodeproj -scheme Moviehub -destination 'platform=iOS Simulator,OS=13.1,name=iPhone 11 Pro Max' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+        xcodebuild clean test -project Moviehub.xcodeproj -scheme Moviehub -destination 'platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
         
