@@ -6,8 +6,17 @@
         "repositoryURL": "https://github.com/oskarek/ComposableArchitecture.git",
         "state": {
           "branch": "master",
-          "revision": "80af27e9de376181fd3676db1330539334bcfcd4",
+          "revision": "d1dac469965b43bd9e9cb2d6f73fcb76cf18e3c8",
           "version": null
+        }
+      },
+      {
+        "package": "CasePaths",
+        "repositoryURL": "https://github.com/pointfreeco/swift-case-paths.git",
+        "state": {
+          "branch": null,
+          "revision": "a9c1e05518b6d95cf5844d823020376f2b6ff842",
+          "version": "0.1.0"
         }
       },
       {

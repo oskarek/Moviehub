@@ -2,6 +2,7 @@ import Foundation
 import ComposableArchitecture
 import Types
 import Search
+import CasePaths
 
 struct AppState {
   var searchText: String = ""
@@ -31,21 +32,10 @@ extension AppState {
 
 enum AppAction {
   case search(SearchAction)
-
-  var search: SearchAction? {
-    get {
-      guard case let .search(value) = self else { return nil }
-      return value
-    }
-    set {
-      guard case .search = self, let newValue = newValue else { return }
-      self = .search(newValue)
-    }
-  }
 }
 
 let appReducer: Reducer<AppState, AppAction> =
-  pullback(searchReducer, value: \.search, action: \.search)
+  pullback(searchReducer, value: \.search, action: /AppAction.search)
 
 let store = Store<AppState, AppAction>(
   initialValue: .init(),
