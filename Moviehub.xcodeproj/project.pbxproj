@@ -2538,7 +2538,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/oskarek/ComposableArchitecture.git";
 			requirement = {
-				branch = prototype/environment;
+				branch = master;
 				kind = branch;
 			};
 		};
