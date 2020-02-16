@@ -108,8 +108,20 @@ func movie(for movieId: Movie.ID) -> Effect<ExtendedMovie?> {
     .eraseToEffect()
 }
 
-public let liveTMDbProvider = TMDbProvider(
-  multiSearch: multiSearch(query:),
-  searchResultImage: searchResultImage(for:),
-  movie: movie(for:)
-)
+extension TMDbProvider {
+  public static var live: TMDbProvider {
+    TMDbProvider(
+      multiSearch: multiSearch(query:),
+      searchResultImage: searchResultImage(for:),
+      movie: movie(for:)
+    )
+  }
+
+  public static var mock: TMDbProvider {
+    TMDbProvider(
+      multiSearch: { _ in .sync { nil } },
+      searchResultImage: { _ in .sync { nil } },
+      movie: { _ in .sync { nil } }
+    )
+  }
+}

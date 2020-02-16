@@ -3,7 +3,6 @@ import SwiftUI
 import ComposableArchitecture
 import Types
 import API
-import Environment
 import Utils
 
 public enum SearchAction: Equatable {
@@ -31,24 +30,25 @@ public struct SearchState: Equatable {
   }
 }
 
-public let searchReducer: Reducer<SearchState, SearchAction> = { state, action in
+public typealias SearchEnvironment = TMDbProvider
+
+public let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment> { state, action, env in
   switch action {
   case let .textChanged(query):
     state.shouldShowSpinner = state.items == nil
     state.query = query
-    return [
-      Current.apiProvider
-        .multiSearch(state.query)
-        .map(SearchAction.resultChanged)
-        .receive(on: DispatchQueue.main)
-        .eraseToEffect()
-    ]
+    return env
+      .multiSearch(state.query)
+      .map(SearchAction.resultChanged)
+      .receive(on: DispatchQueue.main)
+      .eraseToEffect()
   case let .resultChanged(items):
     state.shouldShowSpinner = false
     state.itemImageStates = [:]
     state.items = items
-    return items?.map { item in
-      Current.apiProvider
+    guard let items = items else { return .none }
+    return .concat(items.map { item in
+      env
         .searchResultImage(item)
         .map { data in
           let state = data.map(LoadingState.loaded) ?? .empty
@@ -56,17 +56,17 @@ public let searchReducer: Reducer<SearchState, SearchAction> = { state, action i
         }
         .receive(on: DispatchQueue.main)
         .eraseToEffect()
-    } ?? []
+    })
   case let .setImageState(mediaItem, imageState):
     state.itemImageStates[mediaItem.id] = imageState
-    return []
+    return .none
   }
 }
 
 public struct SearchView: View {
-  @ObservedObject var store: Store<SearchState, SearchAction>
+  @ObservedObject var store: Store<SearchState, SearchAction, SearchEnvironment>
 
-  public init(store: Store<SearchState, SearchAction>) {
+  public init(store: Store<SearchState, SearchAction, SearchEnvironment>) {
     self.store = store
   }
 
@@ -100,14 +100,15 @@ struct SearchView_Previews: PreviewProvider {
   static let searchResult = Array(repeating: dummyMediaItem, count: 5)
 
   static var previews: some View {
-    let store = Store<SearchState, SearchAction>(
+    let store = Store<SearchState, SearchAction, SearchEnvironment>(
       initialValue: SearchState(
         query: "",
         items: searchResult,
         itemImageStates: [:],
         shouldShowSpinner: false
       ),
-      reducer: searchReducer
+      reducer: searchReducer,
+      environment: .mock
     )
     return NavigationView {
       SearchView(store: store)

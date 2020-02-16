@@ -34,10 +34,15 @@ enum AppAction {
   case search(SearchAction)
 }
 
-let appReducer: Reducer<AppState, AppAction> =
-  pullback(searchReducer, value: \.search, action: /AppAction.search)
+extension AppEnvironment {
+  var search: SearchEnvironment { self.apiProvider }
+}
 
-let store = Store<AppState, AppAction>(
+let appReducer: Reducer<AppState, AppAction, AppEnvironment> =
+  pullback(searchReducer, value: \.search, action: /AppAction.search, environment: \.search)
+
+let store = Store<AppState, AppAction, AppEnvironment>(
   initialValue: .init(),
-  reducer: appReducer
+  reducer: appReducer,
+  environment: .live
 )

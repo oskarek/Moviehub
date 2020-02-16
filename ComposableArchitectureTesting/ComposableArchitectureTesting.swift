@@ -49,52 +49,96 @@ public extension Step {
   }
 }
 
-public func assert<Value: Equatable, Action: Equatable>(
+func runEffect<Value, Action>(_ effect: Effect<Action>, at step: Step<Value, Action>) -> [Action] {
+  var actions: [Action] = []
+  let receivedCompletion = XCTestExpectation(description: "receivedCompletion")
+  let cancellable = effect.sink(
+    receiveCompletion: { _ in
+      receivedCompletion.fulfill()
+  },
+    receiveValue: { actions.append($0) }
+  )
+  if XCTWaiter.wait(for: [receivedCompletion], timeout: 0.01) != .completed {
+    cancellable.cancel()
+    XCTFail("Timed out waiting for the effect to complete", file: step.file, line: step.line)
+  }
+  return actions
+}
+
+public func assert<Value: Equatable, Action: Equatable, Environment>(
   initialValue: Value,
-  reducer: Reducer<Value, Action>,
+  environment: Environment,
+  reducer: Reducer<Value, Action, Environment>,
   steps: Step<Value, Action>...,
   file: StaticString = #file,
   line: UInt = #line
 ) {
   var state = initialValue
-  var effects: [Effect<Action>] = []
+  var pendingActions: [Action] = []
 
-  steps.forEach { step in
-    var expected = state
-
-    switch step.type {
+  steps.grouped(by: { $0.type }).forEach { steps in
+    switch steps[0].type {
     case .send:
-      if !effects.isEmpty {
-        XCTFail("Action sent before handling \(effects.count) pending effect(s)", file: step.file, line: step.line)
+      if !pendingActions.isEmpty {
+        XCTFail(
+          "Action sent before handling \(pendingActions.count) pending action(s)",
+          file: steps[0].file,
+          line: steps[0].line
+        )
       }
-      effects.append(contentsOf: reducer(&state, step.action))
+      for step in steps {
+        var expected = state
+        let effect = reducer.run(&state, step.action, environment)
+        pendingActions.append(contentsOf: runEffect(effect, at: step))
+        step.update(&expected)
+        XCTAssertEqual(state, expected, file: step.file, line: step.line)
+      }
 
     case .receive:
-      guard !effects.isEmpty else {
-        XCTFail("No pending effects to receive from", file: step.file, line: step.line)
-        break
-      }
-      let effect = effects.removeFirst()
-      var action: Action!
-      let receivedCompletion = XCTestExpectation(description: "receivedCompletion")
-      let cancellable = effect.sink(
-        receiveCompletion: { _ in
-          receivedCompletion.fulfill()
-      },
-        receiveValue: { action = $0 }
-      )
-      if XCTWaiter.wait(for: [receivedCompletion], timeout: 0.01) != .completed {
-        cancellable.cancel()
-        XCTFail("Timed out waiting for the effect to complete", file: step.file, line: step.line)
-      }
-      XCTAssertEqual(action, step.action, file: step.file, line: step.line)
-      effects.append(contentsOf: reducer(&state, action))
-    }
+      for step in steps {
+        guard !pendingActions.isEmpty else {
+          XCTFail("No pending actions to receive", file: step.file, line: step.line)
+          break
+        }
 
-    step.update(&expected)
-    XCTAssertEqual(state, expected, file: step.file, line: step.line)
+        let action = pendingActions.removeFirst()
+        var expected = state
+
+        XCTAssertEqual(action, step.action, file: step.file, line: step.line)
+        let effect = reducer.run(&state, action, environment)
+        let actions = runEffect(effect, at: step)
+        pendingActions.append(contentsOf: actions)
+        step.update(&expected)
+        XCTAssertEqual(state, expected, file: step.file, line: step.line)
+      }
+
+      if !pendingActions.isEmpty {
+        XCTFail("Assertion failed to handle \(pendingActions.count) pending actions(s)", file: file, line: line)
+      }
+    }
   }
-  if !effects.isEmpty {
-    XCTFail("Assertion failed to handle \(effects.count) pending effect(s)", file: file, line: line)
+  if !pendingActions.isEmpty {
+    XCTFail("Assertion failed to handle \(pendingActions.count) pending actions(s)", file: file, line: line)
+  }
+}
+
+// TODO: Remove this from here, only temporarily placed here
+extension Array {
+  func grouped<A: Equatable>(by prop: (Element) -> A) -> [[Element]] {
+    guard !self.isEmpty else { return [] }
+    var currGroup: [Element] = [self.first!]
+    var res: [[Element]] = []
+    for elem in self.dropFirst() {
+      if prop(currGroup.last!) == prop(elem) {
+        currGroup.append(elem)
+      } else {
+        res.append(currGroup)
+        currGroup = [elem]
+      }
+    }
+    if !currGroup.isEmpty {
+      res.append(currGroup)
+    }
+    return res
   }
 }

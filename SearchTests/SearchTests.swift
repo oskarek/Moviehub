@@ -3,18 +3,11 @@ import XCTest
 import ComposableArchitecture
 import Types
 import ComposableArchitectureTesting
-import TestSupport
-import Environment
 import API
 import Overture
 
-class SearchTests: MoviehubTestCase {
+class SearchTests: XCTestCase {
   func testSearchHappyFlow() {
-    update(&Current.apiProvider) {
-      $0.multiSearch = { query in .sync { query.isEmpty ? nil : [.movie(dummyMovie)] } }
-      $0.searchResultImage = { _ in .sync { Data() } }
-    }
-
     assert(
       initialValue: SearchState(
         query: "",
@@ -22,6 +15,10 @@ class SearchTests: MoviehubTestCase {
         itemImageStates: [:],
         shouldShowSpinner: false
       ),
+      environment: update(SearchEnvironment.mock) {
+        $0.multiSearch = { query in .sync { query.isEmpty ? nil : [.movie(dummyMovie)] } }
+        $0.searchResultImage = { _ in .sync { Data() } }
+      },
       reducer: searchReducer,
       steps:
       .send(.textChanged("I")) {
@@ -44,11 +41,6 @@ class SearchTests: MoviehubTestCase {
   }
 
   func testSearchUnhappyFlow() {
-    update(&Current.apiProvider) {
-      $0.multiSearch = { _ in .sync { nil } }
-      $0.searchResultImage = { _ in .sync { nil } }
-    }
-
     assert(
       initialValue: SearchState(
         query: "",
@@ -56,6 +48,10 @@ class SearchTests: MoviehubTestCase {
         itemImageStates: [:],
         shouldShowSpinner: false
       ),
+      environment: update(SearchEnvironment.mock) {
+        $0.multiSearch = { _ in .sync { nil } }
+        $0.searchResultImage = { _ in .sync { nil } }
+      },
       reducer: searchReducer,
       steps:
       .send(.textChanged("I")) {
