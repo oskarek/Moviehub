@@ -31,23 +31,22 @@ public struct SearchState: Equatable {
   }
 }
 
-public let searchReducer: Reducer<SearchState, SearchAction> = { state, action in
+public let searchReducer = Reducer<SearchState, SearchAction> { state, action in
   switch action {
   case let .textChanged(query):
     state.shouldShowSpinner = state.items == nil
     state.query = query
-    return [
-      Current.apiProvider
-        .multiSearch(state.query)
-        .map(SearchAction.resultChanged)
-        .receive(on: DispatchQueue.main)
-        .eraseToEffect()
-    ]
+    return Current.apiProvider
+      .multiSearch(state.query)
+      .map(SearchAction.resultChanged)
+      .receive(on: DispatchQueue.main)
+      .eraseToEffect()
   case let .resultChanged(items):
     state.shouldShowSpinner = false
     state.itemImageStates = [:]
     state.items = items
-    return items?.map { item in
+    guard let items = items else { return .none }
+    return .concat(items.map { item in
       Current.apiProvider
         .searchResultImage(item)
         .map { data in
@@ -56,10 +55,10 @@ public let searchReducer: Reducer<SearchState, SearchAction> = { state, action i
         }
         .receive(on: DispatchQueue.main)
         .eraseToEffect()
-    } ?? []
+    })
   case let .setImageState(mediaItem, imageState):
     state.itemImageStates[mediaItem.id] = imageState
-    return []
+    return .none
   }
 }
 
