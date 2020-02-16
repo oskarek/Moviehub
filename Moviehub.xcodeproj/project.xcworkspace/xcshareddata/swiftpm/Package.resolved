@@ -5,8 +5,8 @@
         "package": "ComposableArchitecture",
         "repositoryURL": "https://github.com/oskarek/ComposableArchitecture.git",
         "state": {
-          "branch": "master",
-          "revision": "ff144f7d7bd04aba4105f4f6833a95ba7ab1f1c3",
+          "branch": "prototype/environment",
+          "revision": "a5509114d54f55f09407fe7524e1296c57c0c8f3",
           "version": null
         }
       },

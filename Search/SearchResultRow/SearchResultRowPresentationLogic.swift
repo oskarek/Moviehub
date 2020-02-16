@@ -2,7 +2,6 @@ import Foundation
 import Overture
 import Types
 import API
-import Environment
 import SwiftUI
 import Utils
 import Styleguide

@@ -3,7 +3,7 @@ import Search
 import ComposableArchitecture
 
 struct ContentView: View {
-  @ObservedObject var store: Store<AppState, AppAction>
+  @ObservedObject var store: Store<AppState, AppAction, AppEnvironment>
 
   var body: some View {
     TabView {
@@ -11,7 +11,8 @@ struct ContentView: View {
         SearchView(
           store: self.store.view(
             value: { $0.search },
-            action: AppAction.search
+            action: AppAction.search,
+            environment: { $0.search }
           )
         )
       }
