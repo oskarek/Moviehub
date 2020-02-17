@@ -5,11 +5,15 @@ import Types
 import API
 import Utils
 
+// MARK: Action
+
 public enum SearchAction: Equatable {
   case textChanged(String)
   case resultChanged([MediaItem]?)
   case setImageState(for: MediaItem, to: LoadingState<Data>)
 }
+
+// MARK: State
 
 public struct SearchState: Equatable {
   public var query: String
@@ -30,15 +34,20 @@ public struct SearchState: Equatable {
   }
 }
 
+// MARK: Environment
+
 public typealias SearchEnvironment = TMDbProvider
+
+// MARK: Reducer
 
 public let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment> { state, action in
   switch action {
   case let .textChanged(query):
     state.shouldShowSpinner = state.items == nil
     state.query = query
-    return { env in
-      env.multiSearch(query)
+    return { environment in
+      environment
+        .multiSearch(query)
         .map(SearchAction.resultChanged)
         .receive(on: DispatchQueue.main)
         .eraseToEffect()
@@ -47,10 +56,10 @@ public let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>
     state.shouldShowSpinner = false
     state.itemImageStates = [:]
     state.items = items
-    return { env in
+    return { environment in
       guard let items = items else { return .none }
       return .concat(items.map { item in
-        env
+        environment
           .searchResultImage(item)
           .map { data in
             let state = data.map(LoadingState.loaded) ?? .empty
@@ -65,6 +74,8 @@ public let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>
     return { _ in .none }
   }
 }
+
+// MARK: View
 
 public struct SearchView: View {
   @ObservedObject var store: Store<SearchState, SearchAction>
@@ -98,6 +109,8 @@ public struct SearchView: View {
     }.navigationBarTitle("Search")
   }
 }
+
+// MARK: Previews
 
 struct SearchView_Previews: PreviewProvider {
   static let searchResult = Array(repeating: dummyMediaItem, count: 5)
