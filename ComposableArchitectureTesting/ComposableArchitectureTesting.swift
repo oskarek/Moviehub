@@ -74,71 +74,36 @@ public func assert<Value: Equatable, Action: Equatable, Environment>(
   line: UInt = #line
 ) {
   var state = initialValue
-  var pendingActions: [Action] = []
+  var actions: [Action] = []
 
-  steps.grouped(by: { $0.type }).forEach { steps in
-    switch steps[0].type {
+  steps.forEach { step in
+    var expected = state
+
+    switch step.type {
     case .send:
-      if !pendingActions.isEmpty {
-        XCTFail(
-          "Action sent before handling \(pendingActions.count) pending action(s)",
-          file: steps[0].file,
-          line: steps[0].line
-        )
+      guard actions.isEmpty else {
+        XCTFail("Action sent before handling \(actions.count) pending actions(s)", file: step.file, line: step.line)
+        return
       }
-      for step in steps {
-        var expected = state
-        let effect = reducer.run(&state, step.action, environment)
-        pendingActions.append(contentsOf: runEffect(effect, at: step))
-        step.update(&expected)
-        XCTAssertEqual(state, expected, file: step.file, line: step.line)
-      }
+      let effect = reducer.run(&state, step.action)(environment)
+      actions.append(contentsOf: runEffect(effect, at: step))
 
     case .receive:
-      for step in steps {
-        guard !pendingActions.isEmpty else {
-          XCTFail("No pending actions to receive", file: step.file, line: step.line)
-          break
-        }
-
-        let action = pendingActions.removeFirst()
-        var expected = state
-
-        XCTAssertEqual(action, step.action, file: step.file, line: step.line)
-        let effect = reducer.run(&state, action, environment)
-        let actions = runEffect(effect, at: step)
-        pendingActions.append(contentsOf: actions)
-        step.update(&expected)
-        XCTAssertEqual(state, expected, file: step.file, line: step.line)
+      guard !actions.isEmpty else {
+        XCTFail("No pending actions to receive", file: step.file, line: step.line)
+        break
       }
+      let action = actions.removeFirst()
+      XCTAssertEqual(action, step.action, file: step.file, line: step.line)
 
-      if !pendingActions.isEmpty {
-        XCTFail("Assertion failed to handle \(pendingActions.count) pending actions(s)", file: file, line: line)
-      }
+      let effect = reducer.run(&state, action)(environment)
+      actions.append(contentsOf: runEffect(effect, at: step))
     }
+
+    step.update(&expected)
+    XCTAssertEqual(state, expected, file: step.file, line: step.line)
   }
-  if !pendingActions.isEmpty {
-    XCTFail("Assertion failed to handle \(pendingActions.count) pending actions(s)", file: file, line: line)
-  }
-}
-
-// TODO: Remove this from here, only temporarily placed here
-extension Array {
-  func grouped<A: Equatable>(by prop: (Element) -> A) -> [[Element]] {
-    guard !self.isEmpty else { return [] }
-    var currGroup: [Element] = [self.first!]
-    var res: [[Element]] = []
-    for elem in self.dropFirst() {
-      if prop(currGroup.last!) == prop(elem) {
-        currGroup.append(elem)
-      } else {
-        res.append(currGroup)
-        currGroup = [elem]
-      }
-    }
-    if !currGroup.isEmpty {
-      res.append(currGroup)
-    }
-    return res
+  if !actions.isEmpty {
+    XCTFail("Assertion failed to handle \(actions.count) pending action(s)", file: file, line: line)
   }
 }
