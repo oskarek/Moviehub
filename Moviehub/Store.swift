@@ -39,7 +39,7 @@ extension AppEnvironment {
 }
 
 let appReducer: Reducer<AppState, AppAction, AppEnvironment> =
-  pullback(searchReducer, value: \.search, action: /AppAction.search, environment: \.search)
+  searchReducer.pullback(value: \.search, action: /AppAction.search, environment: \.search)
 
 let store = Store<AppState, AppAction>(
   initialValue: .init(),
