@@ -64,9 +64,9 @@ public let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>
 }
 
 public struct SearchView: View {
-  @ObservedObject var store: Store<SearchState, SearchAction, SearchEnvironment>
+  @ObservedObject var store: Store<SearchState, SearchAction>
 
-  public init(store: Store<SearchState, SearchAction, SearchEnvironment>) {
+  public init(store: Store<SearchState, SearchAction>) {
     self.store = store
   }
 
@@ -100,7 +100,7 @@ struct SearchView_Previews: PreviewProvider {
   static let searchResult = Array(repeating: dummyMediaItem, count: 5)
 
   static var previews: some View {
-    let store = Store<SearchState, SearchAction, SearchEnvironment>(
+    let store = Store<SearchState, SearchAction>(
       initialValue: SearchState(
         query: "",
         items: searchResult,

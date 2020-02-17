@@ -41,7 +41,7 @@ extension AppEnvironment {
 let appReducer: Reducer<AppState, AppAction, AppEnvironment> =
   pullback(searchReducer, value: \.search, action: /AppAction.search, environment: \.search)
 
-let store = Store<AppState, AppAction, AppEnvironment>(
+let store = Store<AppState, AppAction>(
   initialValue: .init(),
   reducer: appReducer,
   environment: .live
