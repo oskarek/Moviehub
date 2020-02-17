@@ -32,34 +32,37 @@ public struct SearchState: Equatable {
 
 public typealias SearchEnvironment = TMDbProvider
 
-public let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment> { state, action, env in
+public let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment> { state, action in
   switch action {
   case let .textChanged(query):
     state.shouldShowSpinner = state.items == nil
     state.query = query
-    return env
-      .multiSearch(state.query)
-      .map(SearchAction.resultChanged)
-      .receive(on: DispatchQueue.main)
-      .eraseToEffect()
+    return { env in
+      env.multiSearch(query)
+        .map(SearchAction.resultChanged)
+        .receive(on: DispatchQueue.main)
+        .eraseToEffect()
+    }
   case let .resultChanged(items):
     state.shouldShowSpinner = false
     state.itemImageStates = [:]
     state.items = items
-    guard let items = items else { return .none }
-    return .concat(items.map { item in
-      env
-        .searchResultImage(item)
-        .map { data in
-          let state = data.map(LoadingState.loaded) ?? .empty
-          return SearchAction.setImageState(for: item, to: state)
-        }
-        .receive(on: DispatchQueue.main)
-        .eraseToEffect()
-    })
+    return { env in
+      guard let items = items else { return .none }
+      return .concat(items.map { item in
+        env
+          .searchResultImage(item)
+          .map { data in
+            let state = data.map(LoadingState.loaded) ?? .empty
+            return SearchAction.setImageState(for: item, to: state)
+          }
+          .receive(on: DispatchQueue.main)
+          .eraseToEffect()
+      })
+    }
   case let .setImageState(mediaItem, imageState):
     state.itemImageStates[mediaItem.id] = imageState
-    return .none
+    return { _ in .none }
   }
 }
 
