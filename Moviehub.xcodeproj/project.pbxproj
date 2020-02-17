@@ -1103,7 +1103,6 @@
 					};
 					FF1DFEDA238D18710022A175 = {
 						CreatedOnToolsVersion = 11.2.1;
-						TestTargetID = FF89C74A2383CCDE00B87586;
 					};
 					FF697F66239F865A00EC27CF = {
 						CreatedOnToolsVersion = 11.2.1;
@@ -1122,7 +1121,6 @@
 					};
 					FF89C7A12383D26200B87586 = {
 						CreatedOnToolsVersion = 11.1;
-						TestTargetID = FF89C74A2383CCDE00B87586;
 					};
 					FF89C7C32383E3D400B87586 = {
 						CreatedOnToolsVersion = 11.1;
@@ -1130,7 +1128,6 @@
 					};
 					FF89C7CB2383E3D500B87586 = {
 						CreatedOnToolsVersion = 11.1;
-						TestTargetID = FF89C74A2383CCDE00B87586;
 					};
 					FF89C7F32383F8A600B87586 = {
 						CreatedOnToolsVersion = 11.1;
@@ -1145,7 +1142,6 @@
 					};
 					FFEE2B19239291300079BBC9 = {
 						CreatedOnToolsVersion = 11.2.1;
-						TestTargetID = FF89C74A2383CCDE00B87586;
 					};
 				};
 			};
@@ -1674,7 +1670,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moviehub.app/Moviehub";
 			};
 			name = Debug;
 		};
@@ -1695,7 +1690,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moviehub.app/Moviehub";
 			};
 			name = Release;
 		};
@@ -2049,7 +2043,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moviehub.app/Moviehub";
 			};
 			name = Debug;
 		};
@@ -2069,7 +2062,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moviehub.app/Moviehub";
 			};
 			name = Release;
 		};
@@ -2150,7 +2142,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moviehub.app/Moviehub";
 			};
 			name = Debug;
 		};
@@ -2170,7 +2161,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moviehub.app/Moviehub";
 			};
 			name = Release;
 		};
@@ -2377,7 +2367,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moviehub.app/Moviehub";
 			};
 			name = Debug;
 		};
@@ -2398,7 +2387,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moviehub.app/Moviehub";
 			};
 			name = Release;
 		};
