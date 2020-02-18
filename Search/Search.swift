@@ -89,11 +89,11 @@ public struct SearchView: View {
       SearchBar(
         title: "Movies, TV-shows, actors..",
         searchText: Binding(
-          get: { self.store.value.query },
+          get: { self.store.query },
           set: { self.store.send(.textChanged($0)) }
         )
       )
-      if self.store.value.shouldShowSpinner {
+      if self.store.shouldShowSpinner {
         VStack {
           ActivityIndicator()
             .frame(width: 15, height: 15)
@@ -102,8 +102,8 @@ public struct SearchView: View {
         }
       } else {
         SearchResultView(
-          items: self.store.value.items,
-          imageStates: self.store.value.itemImageStates
+          items: self.store.items,
+          imageStates: self.store.itemImageStates
         )
       }
     }.navigationBarTitle("Search")
