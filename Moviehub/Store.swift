@@ -1,7 +1,7 @@
 import Foundation
 import ComposableArchitecture
-import Types
-import Search
+import MoviehubTypes
+import MoviehubSearch
 import CasePaths
 
 struct AppState {

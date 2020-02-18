@@ -93,4 +93,4 @@ iOSInjectionProject/
 BuildConfig/release.xcconfig
 
 # Sourcery
-Generated/*
+**/Generated/*

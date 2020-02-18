@@ -1,5 +1,5 @@
 import SwiftUI
-import Search
+import MoviehubSearch
 import ComposableArchitecture
 
 struct ContentView: View {

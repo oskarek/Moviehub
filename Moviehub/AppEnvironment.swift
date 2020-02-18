@@ -1,5 +1,5 @@
 import Foundation
-import API
+import MoviehubAPI
 import Overture
 
 public struct AppEnvironment {

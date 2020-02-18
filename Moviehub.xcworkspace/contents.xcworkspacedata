@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:MoviehubAPI">
+   </FileRef>
+   <FileRef
+      location = "group:MoviehubSearch">
+   </FileRef>
+   <FileRef
+      location = "group:MoviehubStyleguide">
+   </FileRef>
+   <FileRef
+      location = "group:MoviehubTypes">
+   </FileRef>
+   <FileRef
+      location = "group:MoviehubUtils">
+   </FileRef>
+   <FileRef
+      location = "container:Moviehub.xcodeproj">
+   </FileRef>
+</Workspace>
