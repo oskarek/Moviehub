@@ -11,15 +11,15 @@ let apiKey = AppSecrets.themoviedbApiKey
 let baseUrl = URL(string: "https://api.themoviedb.org/3")!
 let imageBaseUrl = URL(string: "https://image.tmdb.org/t/p")!
 
-public let tmdbDateFormatter = update(DateFormatter()) {
+let tmdbDateFormatter = update(DateFormatter()) {
   $0.dateFormat = "yyyy-MM-dd"
 }
 
-public let tmdbDecoder = update(JSONDecoder()) {
+let tmdbDecoder = update(JSONDecoder()) {
   $0.keyDecodingStrategy = .convertFromSnakeCase
   $0.dateDecodingStrategy = .formatted(tmdbDateFormatter)
 }
-public let tmdbEncoder = update(JSONEncoder()) {
+let tmdbEncoder = update(JSONEncoder()) {
   $0.keyEncodingStrategy = .convertToSnakeCase
   $0.dateEncodingStrategy = .formatted(tmdbDateFormatter)
 }
