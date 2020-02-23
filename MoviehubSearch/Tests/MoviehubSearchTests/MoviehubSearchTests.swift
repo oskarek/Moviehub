@@ -15,8 +15,8 @@ final class MoviehubSearchTests: XCTestCase {
           shouldShowSpinner: false
         ),
         environment: update(SearchEnvironment.mock) {
-          $0.multiSearch = { query in .sync { query.isEmpty ? nil : [.movie(dummyMovie)] } }
-          $0.searchResultImage = { _ in .sync { Data() } }
+          $0.multiSearch = { query in .pure(query.isEmpty ? nil : [.movie(dummyMovie)]) }
+          $0.searchResultImage = { _ in .pure(Data()) }
         },
         reducer: searchReducer,
         steps:
@@ -48,8 +48,8 @@ final class MoviehubSearchTests: XCTestCase {
           shouldShowSpinner: false
         ),
         environment: update(SearchEnvironment.mock) {
-          $0.multiSearch = { _ in .sync { nil } }
-          $0.searchResultImage = { _ in .sync { nil } }
+          $0.multiSearch = { _ in .pure(nil) }
+          $0.searchResultImage = { _ in .pure(nil) }
         },
         reducer: searchReducer,
         steps:

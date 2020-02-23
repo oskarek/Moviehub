@@ -68,7 +68,7 @@ private func tmdbData(
 }
 
 func multiSearch(query: String) -> Effect<[MediaItem]?> {
-  guard !query.isEmpty else { return .sync { nil } }
+  guard !query.isEmpty else { return .pure(nil) }
 
   let path = baseUrl.absoluteString + "/search/multi"
   return tmdbData(path: path, parameters: ["query": query])
@@ -90,7 +90,7 @@ private func imagePath(for mediaItem: MediaItem) -> String? {
 }
 
 func searchResultImage(for mediaItem: MediaItem) -> Effect<Data?> {
-  guard let path = imagePath(for: mediaItem) else { return .sync { nil } }
+  guard let path = imagePath(for: mediaItem) else { return .pure(nil) }
 
   return tmdbData(path: path)
     .map(Optional.some)
@@ -118,9 +118,9 @@ extension TMDbProvider {
 
   public static var mock: TMDbProvider {
     TMDbProvider(
-      multiSearch: { _ in .sync { nil } },
-      searchResultImage: { _ in .sync { nil } },
-      movie: { _ in .sync { nil } }
+      multiSearch: { _ in .pure(nil) },
+      searchResultImage: { _ in .pure(nil) },
+      movie: { _ in .pure(nil) }
     )
   }
 }
