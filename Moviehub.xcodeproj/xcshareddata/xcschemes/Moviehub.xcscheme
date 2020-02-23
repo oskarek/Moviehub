@@ -38,46 +38,6 @@
                ReferencedContainer = "container:Moviehub.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FF89C7A12383D26200B87586"
-               BuildableName = "SearchTests.xctest"
-               BlueprintName = "SearchTests"
-               ReferencedContainer = "container:Moviehub.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FF89C7CB2383E3D500B87586"
-               BuildableName = "APITests.xctest"
-               BlueprintName = "APITests"
-               ReferencedContainer = "container:Moviehub.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FF1DFEDA238D18710022A175"
-               BuildableName = "UtilsTests.xctest"
-               BlueprintName = "UtilsTests"
-               ReferencedContainer = "container:Moviehub.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FFEE2B19239291300079BBC9"
-               BuildableName = "TypesTests.xctest"
-               BlueprintName = "TypesTests"
-               ReferencedContainer = "container:Moviehub.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
