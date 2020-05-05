@@ -33,16 +33,16 @@ struct SearchResults: Decodable {
 public struct TMDbProvider {
   /// Hit the multi-search api endpoint. Returns a list of MediaItems, that matches the search query.
   /// - Parameter query: The string to search for.
-  public var multiSearch: (_ query: String) -> Effect<[MediaItem]?>
+  public var multiSearch: (_ query: String) -> Effect<[MediaItem]?, Never>
   /// Fetch an image for a mediaItem to display in the search results.
-  public var searchResultImage: (_ mediaItem: MediaItem) -> Effect<Data?>
+  public var searchResultImage: (_ mediaItem: MediaItem) -> Effect<Data?, Never>
   /// Get extended information about a movie, via its id
-  public var movie: (_ movieId: Movie.ID) -> Effect<ExtendedMovie?>
+  public var movie: (_ movieId: Movie.ID) -> Effect<ExtendedMovie?, Never>
 
   public init(
-    multiSearch: @escaping (_ query: String) -> Effect<[MediaItem]?>,
-    searchResultImage: @escaping (_ mediaItem: MediaItem) -> Effect<Data?>,
-    movie: @escaping (_ movieId: Movie.ID) -> Effect<ExtendedMovie?>) {
+    multiSearch: @escaping (_ query: String) -> Effect<[MediaItem]?, Never>,
+    searchResultImage: @escaping (_ mediaItem: MediaItem) -> Effect<Data?, Never>,
+    movie: @escaping (_ movieId: Movie.ID) -> Effect<ExtendedMovie?, Never>) {
     self.multiSearch = multiSearch
     self.searchResultImage = searchResultImage
     self.movie = movie
@@ -67,8 +67,8 @@ private func tmdbData(
     .eraseToAnyPublisher()
 }
 
-func multiSearch(query: String) -> Effect<[MediaItem]?> {
-  guard !query.isEmpty else { return .pure(nil) }
+func multiSearch(query: String) -> Effect<[MediaItem]?, Never> {
+  guard !query.isEmpty else { return Effect(value: nil) }
 
   let path = baseUrl.absoluteString + "/search/multi"
   return tmdbData(path: path, parameters: ["query": query])
@@ -89,8 +89,8 @@ private func imagePath(for mediaItem: MediaItem) -> String? {
   }
 }
 
-func searchResultImage(for mediaItem: MediaItem) -> Effect<Data?> {
-  guard let path = imagePath(for: mediaItem) else { return .pure(nil) }
+func searchResultImage(for mediaItem: MediaItem) -> Effect<Data?, Never> {
+  guard let path = imagePath(for: mediaItem) else { return Effect(value: nil) }
 
   return tmdbData(path: path)
     .map(Optional.some)
@@ -98,7 +98,7 @@ func searchResultImage(for mediaItem: MediaItem) -> Effect<Data?> {
     .eraseToEffect()
 }
 
-func movie(for movieId: Movie.ID) -> Effect<ExtendedMovie?> {
+func movie(for movieId: Movie.ID) -> Effect<ExtendedMovie?, Never> {
   let path = baseUrl.absoluteString + "/movie/\(movieId)"
 
   return tmdbData(path: path)
@@ -118,9 +118,9 @@ extension TMDbProvider {
 
   public static var mock: TMDbProvider {
     TMDbProvider(
-      multiSearch: { _ in .pure(nil) },
-      searchResultImage: { _ in .pure(nil) },
-      movie: { _ in .pure(nil) }
+      multiSearch: { _ in Effect(value: nil) },
+      searchResultImage: { _ in Effect(value: nil) },
+      movie: { _ in Effect(value: nil) }
     )
   }
 }

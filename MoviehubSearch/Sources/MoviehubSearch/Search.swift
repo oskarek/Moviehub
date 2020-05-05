@@ -9,6 +9,7 @@ import MoviehubUtils
 
 public enum SearchAction: Equatable {
   case textChanged(String)
+  case performSearch
   case resultChanged([MediaItem]?)
   case setImageState(for: MediaItem, to: LoadingState<Data>)
 }
@@ -36,77 +37,110 @@ public struct SearchState: Equatable {
 
 // MARK: Environment
 
-public typealias SearchEnvironment = TMDbProvider
+public struct SearchEnvironment {
+  var provider: TMDbProvider
+  var mainQueue: AnySchedulerOf<DispatchQueue>
+
+  public init(provider: TMDbProvider, mainQueue: AnySchedulerOf<DispatchQueue>) {
+    self.provider = provider
+    self.mainQueue = mainQueue
+  }
+}
 
 // MARK: Reducer
 
-public let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment> { state, action in
+public let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>.strict { state, action in
+  struct PerformSeachId: Hashable {}
+  struct MultiSearchId: Hashable {}
+  struct ImageSearchId: Hashable {}
+
   switch action {
   case let .textChanged(query):
-    state.shouldShowSpinner = state.items == nil
     state.query = query
+    guard !query.isEmpty else {
+      return { _ in
+        .merge(
+          Effect(value: .resultChanged(nil)),
+          .cancel(id: PerformSeachId()),
+          .cancel(id: ImageSearchId())
+        )
+      }
+    }
     return { environment in
-      environment
-        .multiSearch(query)
-        .map(SearchAction.resultChanged)
-        .receive(on: DispatchQueue.main)
-        .eraseToEffect()
+      Effect(value: SearchAction.performSearch)
+        .debounce(
+          id: PerformSeachId(),
+          for: .milliseconds(300),
+          scheduler: environment.mainQueue
+        )
     }
   case let .resultChanged(items):
     state.shouldShowSpinner = false
     state.itemImageStates = [:]
     state.items = items
     return { environment in
-      guard let items = items else { return .none }
-      return .concat(items.map { item in
-        environment
+      Effect.merge(items?.map { item in
+        environment.provider
           .searchResultImage(item)
-          .map { data in
-            let state = data.map(LoadingState.loaded) ?? .empty
-            return SearchAction.setImageState(for: item, to: state)
-          }
-          .receive(on: DispatchQueue.main)
+          .receive(on: environment.mainQueue)
           .eraseToEffect()
-      })
+          .map { $0.map(LoadingState.loaded) ?? .empty }
+          .map { SearchAction.setImageState(for: item, to: $0) }
+      } ?? [])
+      .cancellable(id: MultiSearchId(), cancelInFlight: true)
     }
   case let .setImageState(mediaItem, imageState):
     state.itemImageStates[mediaItem.id] = imageState
-    return { _ in .none }
+    return .none
+  case .performSearch:
+    state.shouldShowSpinner = state.items == nil
+    let query = state.query
+    return { environment in
+      environment.provider
+        .multiSearch(query)
+        .receive(on: environment.mainQueue)
+        .eraseToEffect()
+        .map(SearchAction.resultChanged)
+        .cancellable(id: MultiSearchId(), cancelInFlight: true)
+    }
   }
 }
 
 // MARK: View
 
 public struct SearchView: View {
-  @ObservedObject var store: Store<SearchState, SearchAction>
+  let store: Store<SearchState, SearchAction>
 
   public init(store: Store<SearchState, SearchAction>) {
     self.store = store
   }
 
   public var body: some View {
-    VStack {
-      SearchBar(
-        title: "Movies, TV-shows, actors..",
-        searchText: Binding(
-          get: { self.store.query },
-          set: { self.store.send(.textChanged($0)) }
+    WithViewStore(self.store) { viewStore in
+      VStack {
+        SearchBar(
+          title: "Movies, TV-shows, actors..",
+          searchText: viewStore.binding(
+            get: { $0.query },
+            send: { .textChanged($0) }
+          )
         )
-      )
-      if self.store.shouldShowSpinner {
-        VStack {
-          ActivityIndicator()
-            .frame(width: CGFloat(15.0), height: CGFloat(15.0))
-            .padding(50)
-          Spacer()
+        if viewStore.shouldShowSpinner {
+          VStack {
+            ActivityIndicator()
+              .frame(width: CGFloat(15.0), height: CGFloat(15.0))
+              .padding(50)
+            Spacer()
+          }
+        } else {
+          SearchResultView(
+            items: viewStore.items,
+            imageStates: viewStore.itemImageStates
+          )
         }
-      } else {
-        SearchResultView(
-          items: self.store.items,
-          imageStates: self.store.itemImageStates
-        )
       }
-    }.navigationBarTitle("Search")
+      .navigationBarTitle("Search")
+    }
   }
 }
 
@@ -117,17 +151,31 @@ struct SearchView_Previews: PreviewProvider {
 
   static var previews: some View {
     let store = Store<SearchState, SearchAction>(
-      initialValue: SearchState(
+      initialState: .init(
         query: "",
         items: searchResult,
         itemImageStates: [:],
         shouldShowSpinner: false
       ),
       reducer: searchReducer,
-      environment: .mock
+      environment: .init(
+        provider: .mock,
+        mainQueue: DispatchQueue.main.eraseToAnyScheduler()
+      )
     )
     return NavigationView {
       SearchView(store: store)
+    }
+  }
+}
+
+// TODO: move to some better place
+extension Reducer {
+  static func strict(
+    _ reducer: @escaping (inout State, Action) -> ((Environment) -> Effect<Action, Never>)?
+  ) -> Reducer {
+    .init { state, action, environment in
+      reducer(&state, action)?(environment) ?? .none
     }
   }
 }

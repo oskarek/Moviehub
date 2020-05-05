@@ -3,15 +3,15 @@ import MoviehubSearch
 import ComposableArchitecture
 
 struct ContentView: View {
-  @ObservedObject var store: Store<AppState, AppAction>
+  let store: Store<AppState, AppAction>
 
   var body: some View {
     TabView {
       NavigationView {
         SearchView(
-          store: self.store.view(
-            value: { $0.search },
-            action: AppAction.search
+          store: self.store.scope(
+            state: { $0.search },
+            action: { .search($0) }
           )
         )
       }

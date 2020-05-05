@@ -2,7 +2,6 @@ import Foundation
 import ComposableArchitecture
 import MoviehubTypes
 import MoviehubSearch
-import CasePaths
 
 struct AppState {
   var searchText: String = ""
@@ -35,14 +34,14 @@ enum AppAction {
 }
 
 extension AppEnvironment {
-  var search: SearchEnvironment { self.apiProvider }
+  var search: SearchEnvironment { .init(provider: self.apiProvider, mainQueue: self.mainQueue) }
 }
 
 let appReducer: Reducer<AppState, AppAction, AppEnvironment> =
-  searchReducer.pullback(value: \.search, action: /AppAction.search, environment: \.search)
+  searchReducer.pullback(state: \.search, action: /AppAction.search, environment: \.search)
 
 let store = Store<AppState, AppAction>(
-  initialValue: .init(),
+  initialState: .init(),
   reducer: appReducer,
   environment: .live
 )

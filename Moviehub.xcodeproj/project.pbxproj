@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF660CC423A78E6C0006D73F /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = FF660CC323A78E6C0006D73F /* ComposableArchitecture */; };
 		FF7AA688238AE31500447827 /* Overture in Frameworks */ = {isa = PBXBuildFile; productRef = FF7AA687238AE31500447827 /* Overture */; };
 		FF89C74F2383CCDE00B87586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89C74E2383CCDE00B87586 /* AppDelegate.swift */; };
 		FF89C7512383CCDE00B87586 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89C7502383CCDE00B87586 /* SceneDelegate.swift */; };
@@ -21,6 +20,10 @@
 		FFD1ACE923FBED6F00ED9F7E /* MoviehubAPI in Frameworks */ = {isa = PBXBuildFile; productRef = FFD1ACE823FBED6F00ED9F7E /* MoviehubAPI */; };
 		FFD1ACEB23FBED8700ED9F7E /* MoviehubTypes in Frameworks */ = {isa = PBXBuildFile; productRef = FFD1ACEA23FBED8700ED9F7E /* MoviehubTypes */; };
 		FFD1ACED23FBED9700ED9F7E /* MoviehubSearch in Frameworks */ = {isa = PBXBuildFile; productRef = FFD1ACEC23FBED9700ED9F7E /* MoviehubSearch */; };
+		FFFC868C2462343700B8AD0E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = FFFC868B2462343700B8AD0E /* ComposableArchitecture */; };
+		FFFC868D2462343700B8AD0E /* ComposableArchitecture in Embed Frameworks */ = {isa = PBXBuildFile; productRef = FFFC868B2462343700B8AD0E /* ComposableArchitecture */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		FFFC868F2462343700B8AD0E /* ComposableArchitectureTestSupport in Frameworks */ = {isa = PBXBuildFile; productRef = FFFC868E2462343700B8AD0E /* ComposableArchitectureTestSupport */; };
+		FFFC86902462343700B8AD0E /* ComposableArchitectureTestSupport in Embed Frameworks */ = {isa = PBXBuildFile; productRef = FFFC868E2462343700B8AD0E /* ComposableArchitectureTestSupport */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,12 +37,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		FF3DB63A2461560D00E9B67B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FFFC86902462343700B8AD0E /* ComposableArchitectureTestSupport in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF89C78F2383CE5200B87586 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				FFFC868D2462343700B8AD0E /* ComposableArchitecture in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,8 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFFC868C2462343700B8AD0E /* ComposableArchitecture in Frameworks */,
 				FFD1ACE923FBED6F00ED9F7E /* MoviehubAPI in Frameworks */,
-				FF660CC423A78E6C0006D73F /* ComposableArchitecture in Frameworks */,
 				FF7AA688238AE31500447827 /* Overture in Frameworks */,
 				FFD1ACED23FBED9700ED9F7E /* MoviehubSearch in Frameworks */,
 				FFD1ACEB23FBED8700ED9F7E /* MoviehubTypes in Frameworks */,
@@ -79,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFFC868F2462343700B8AD0E /* ComposableArchitectureTestSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,10 +182,10 @@
 			name = Moviehub;
 			packageProductDependencies = (
 				FF7AA687238AE31500447827 /* Overture */,
-				FF660CC323A78E6C0006D73F /* ComposableArchitecture */,
 				FFD1ACE823FBED6F00ED9F7E /* MoviehubAPI */,
 				FFD1ACEA23FBED8700ED9F7E /* MoviehubTypes */,
 				FFD1ACEC23FBED9700ED9F7E /* MoviehubSearch */,
+				FFFC868B2462343700B8AD0E /* ComposableArchitecture */,
 			);
 			productName = Moviehub;
 			productReference = FF89C74B2383CCDE00B87586 /* Moviehub.app */;
@@ -182,6 +198,7 @@
 				FF89C75D2383CCDF00B87586 /* Sources */,
 				FF89C75E2383CCDF00B87586 /* Frameworks */,
 				FF89C75F2383CCDF00B87586 /* Resources */,
+				FF3DB63A2461560D00E9B67B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -189,6 +206,9 @@
 				FF89C7632383CCDF00B87586 /* PBXTargetDependency */,
 			);
 			name = MoviehubTests;
+			packageProductDependencies = (
+				FFFC868E2462343700B8AD0E /* ComposableArchitectureTestSupport */,
+			);
 			productName = MoviehubTests;
 			productReference = FF89C7612383CCDF00B87586 /* MoviehubTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -223,7 +243,7 @@
 			mainGroup = FF89C7422383CCDE00B87586;
 			packageReferences = (
 				FF7AA686238AE31500447827 /* XCRemoteSwiftPackageReference "swift-overture" */,
-				FF660CC223A78E6C0006D73F /* XCRemoteSwiftPackageReference "ComposableArchitecture" */,
+				FFFC868A2462343700B8AD0E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = FF89C74C2383CCDE00B87586 /* Products */;
 			projectDirPath = "";
@@ -549,14 +569,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FF660CC223A78E6C0006D73F /* XCRemoteSwiftPackageReference "ComposableArchitecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/oskarek/ComposableArchitecture.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		FF7AA686238AE31500447827 /* XCRemoteSwiftPackageReference "swift-overture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-overture.git";
@@ -565,14 +577,17 @@
 				minimumVersion = 0.5.0;
 			};
 		};
+		FFFC868A2462343700B8AD0E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FF660CC323A78E6C0006D73F /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FF660CC223A78E6C0006D73F /* XCRemoteSwiftPackageReference "ComposableArchitecture" */;
-			productName = ComposableArchitecture;
-		};
 		FF7AA687238AE31500447827 /* Overture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FF7AA686238AE31500447827 /* XCRemoteSwiftPackageReference "swift-overture" */;
@@ -589,6 +604,16 @@
 		FFD1ACEC23FBED9700ED9F7E /* MoviehubSearch */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MoviehubSearch;
+		};
+		FFFC868B2462343700B8AD0E /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFFC868A2462343700B8AD0E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		FFFC868E2462343700B8AD0E /* ComposableArchitectureTestSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFFC868A2462343700B8AD0E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitectureTestSupport;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

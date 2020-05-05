@@ -13,8 +13,8 @@ let package = Package(
     )
   ],
   dependencies: [
-    .package(url: "https://github.com/oskarek/ComposableArchitecture.git", .branch("master")),
-    .package(url: "https://github.com/pointfreeco/swift-overture.git", from: "0.5.0"),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: .init(0, 1, 0)),
+    .package(url: "https://github.com/pointfreeco/swift-overture.git", from: .init(0, 5, 0)),
     .package(path: "../MoviehubAPI"),
     .package(path: "../MoviehubStyleguide"),
     .package(path: "../MoviehubTypes"),
@@ -33,7 +33,7 @@ let package = Package(
     ),
     .testTarget(
       name: "MoviehubSearchTests",
-      dependencies: ["Overture", "MoviehubSearch", "ComposableArchitectureTesting"]
+      dependencies: ["Overture", "MoviehubSearch", "ComposableArchitectureTestSupport"]
     )
   ]
 )
