@@ -13,7 +13,7 @@ let package = Package(
     )
   ],
   dependencies: [
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: .init(0, 1, 0)),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: .init(0, 4, 0)),
     .package(url: "https://github.com/pointfreeco/swift-overture.git", from: .init(0, 5, 0)),
     .package(path: "../MoviehubAPI"),
     .package(path: "../MoviehubStyleguide"),
@@ -33,7 +33,7 @@ let package = Package(
     ),
     .testTarget(
       name: "MoviehubSearchTests",
-      dependencies: ["Overture", "MoviehubSearch", "ComposableArchitectureTestSupport"]
+      dependencies: ["Overture", "MoviehubSearch", "ComposableArchitecture"]
     )
   ]
 )

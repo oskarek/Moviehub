@@ -2,7 +2,6 @@ import XCTest
 @testable import MoviehubSearch
 import MoviehubTypes
 import ComposableArchitecture
-import ComposableArchitectureTestSupport
 import Overture
 
 final class MoviehubSearchTests: XCTestCase {
