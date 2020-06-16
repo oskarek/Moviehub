@@ -11,7 +11,7 @@ public enum SearchAction: Equatable {
   case textChanged(String)
   case performSearch
   case resultChanged([MediaItem]?)
-  case setImageState(for: MediaItem, to: LoadingState<Data>)
+  case setImageState(for: MediaItem.ID, to: LoadingState<Data>)
 }
 
 // MARK: State
@@ -85,12 +85,12 @@ public let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>
           .receive(on: environment.mainQueue)
           .eraseToEffect()
           .map { $0.map(LoadingState.loaded) ?? .empty }
-          .map { SearchAction.setImageState(for: item, to: $0) }
+          .map { SearchAction.setImageState(for: item.id, to: $0) }
       } ?? [])
       .cancellable(id: MultiSearchId(), cancelInFlight: true)
     }
-  case let .setImageState(mediaItem, imageState):
-    state.itemImageStates[mediaItem.id] = imageState
+  case let .setImageState(mediaItemId, imageState):
+    state.itemImageStates[mediaItemId] = imageState
     return .none
   case .performSearch:
     state.shouldShowSpinner = state.items == nil

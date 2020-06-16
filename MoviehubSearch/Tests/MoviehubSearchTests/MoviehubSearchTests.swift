@@ -46,7 +46,7 @@ final class MoviehubSearchTests: XCTestCase {
         $0.shouldShowSpinner = false
       },
       .do { self.scheduler.advance() },
-      .receive(.setImageState(for: .movie(dummyMovie), to: .loaded(Data()))) {
+      .receive(.setImageState(for: dummyMovie.id, to: .loaded(Data()))) {
         $0.itemImageStates[dummyMovie.id] = .loaded(Data())
       },
       .send(.textChanged("")) {
