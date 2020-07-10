@@ -1,15 +1,10 @@
 import XCTest
-@testable import MoviehubSearch
-import MoviehubTypes
 import ComposableArchitecture
-import Overture
+import MoviehubTypes
+@testable import Moviehub
 
-final class MoviehubSearchTests: XCTestCase {
+class SearchTests: XCTestCase {
   let scheduler = DispatchQueue.testScheduler
-  lazy var environment = SearchEnvironment(
-    provider: .mock,
-    mainQueue: self.scheduler.eraseToAnyScheduler()
-  )
 
   func testSearchHappyFlow() {
     let store = TestStore(
@@ -20,10 +15,14 @@ final class MoviehubSearchTests: XCTestCase {
         shouldShowSpinner: false
       ),
       reducer: searchReducer,
-      environment: update(self.environment) {
-        $0.provider.multiSearch = { query in Effect(value: query.isEmpty ? nil : [.movie(dummyMovie)]) }
-        $0.provider.searchResultImage = { _ in Effect(value: Data()) }
-      }
+      environment: SearchEnvironment(
+        provider: .init(
+          multiSearch: { query in Effect(value: query.isEmpty ? nil : [.movie(dummyMovie)]) },
+          searchResultImage: { _ in Effect(value: Data()) },
+          movie: { _ in fatalError() }
+        ),
+        mainQueue: self.scheduler.eraseToAnyScheduler()
+      )
     )
 
     store.assert(
@@ -67,10 +66,14 @@ final class MoviehubSearchTests: XCTestCase {
         shouldShowSpinner: false
       ),
       reducer: searchReducer,
-      environment: update(self.environment) {
-        $0.provider.multiSearch = { _ in Effect(value: nil) }
-        $0.provider.searchResultImage = { _ in Effect(value: nil) }
-      }
+      environment: SearchEnvironment(
+        provider: .init(
+          multiSearch: { _ in Effect(value: nil) },
+          searchResultImage: { _ in Effect(value: nil) },
+          movie: { _ in fatalError() }
+        ),
+        mainQueue: self.scheduler.eraseToAnyScheduler()
+      )
     )
 
     store.assert(
@@ -96,9 +99,4 @@ final class MoviehubSearchTests: XCTestCase {
       }
     )
   }
-
-  static var allTests = [
-    ("testSearchHappyFlow", testSearchHappyFlow),
-    ("testSearchUnhappyFlow", testSearchUnhappyFlow)
-  ]
 }

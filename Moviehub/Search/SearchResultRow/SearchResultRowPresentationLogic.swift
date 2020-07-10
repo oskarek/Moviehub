@@ -46,8 +46,7 @@ func imageView(for: MediaItem, inState state: LoadingState<Data>, ofSize size: C
   case .loading:
     let stack = ZStack(alignment: .center) {
       emptyImage
-
-      ActivityIndicator()
+      ProgressView()
         .foregroundColor(.primary)
         .frame(width: 15, height: 15)
     }

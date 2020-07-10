@@ -1,6 +1,5 @@
 import Foundation
 import MoviehubAPI
-import Overture
 import ComposableArchitecture
 
 public struct AppEnvironment {
@@ -49,10 +48,10 @@ extension AppEnvironment {
 
 extension Calendar {
   public static var mock: Calendar {
-    update(Calendar(identifier: .gregorian), {
-      $0.firstWeekday = 1
-      $0.locale = Locale(identifier: "se_SE")
-      $0.timeZone = TimeZone(identifier: "Europe/Stockholm")!
-    })
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.firstWeekday = 1
+    calendar.locale = Locale(identifier: "se_SE")
+    calendar.timeZone = TimeZone(identifier: "Europe/Stockholm")!
+    return calendar
   }
 }

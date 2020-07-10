@@ -2,8 +2,13 @@ import Foundation
 import Combine
 import MoviehubTypes
 import ComposableArchitecture
-import Overture
 import MoviehubUtils
+
+func update<A>(_ aaa: A, _ fs: ((inout A) -> Void)...) -> A {
+  var aaa = aaa
+  fs.forEach { fff in fff(&aaa) }
+  return aaa
+}
 
 // MARK: Configurations constants
 
@@ -61,7 +66,7 @@ private func tmdbData(
 
   let headers = ["Authorization": "Bearer " + apiKey]
   let url = components.url(relativeTo: baseUrl)!
-  let request = update(URLRequest(url: url), mut(\.allHTTPHeaderFields, headers))
+  let request: URLRequest = update(URLRequest(url: url), { $0.allHTTPHeaderFields = headers })
   return URLSession.shared.dataTaskPublisher(for: request)
     .map { data, _ in data }
     .eraseToAnyPublisher()
@@ -73,7 +78,7 @@ func multiSearch(query: String) -> Effect<[MediaItem]?, Never> {
   let path = baseUrl.absoluteString + "/search/multi"
   return tmdbData(path: path, parameters: ["query": query])
     .decode(type: SearchResults.self, decoder: tmdbDecoder)
-    .map { $0.results.compactMap(get(\.base)) }
+    .map { $0.results.compactMap(\.base) }
     .replaceError(with: nil)
     .eraseToEffect()
 }

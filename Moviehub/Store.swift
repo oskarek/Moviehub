@@ -1,7 +1,6 @@
 import Foundation
 import ComposableArchitecture
 import MoviehubTypes
-import MoviehubSearch
 
 struct AppState {
   var searchText: String = ""

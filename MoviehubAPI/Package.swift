@@ -1,11 +1,11 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
   name: "MoviehubAPI",
-  platforms: [.iOS(.v13), .macOS(.v10_15), .tvOS(.v13)],
+  platforms: [.iOS(.v13)],
   products: [
     .library(
       name: "MoviehubAPI",
@@ -13,8 +13,7 @@ let package = Package(
     )
   ],
   dependencies: [
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: .init(0, 4, 0)),
-    .package(url: "https://github.com/pointfreeco/swift-overture.git", from: .init(0, 5, 0)),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: .init(0, 6, 0)),
     .package(path: "../MoviehubTypes"),
     .package(path: "../MoviehubUtils")
   ],
@@ -22,8 +21,7 @@ let package = Package(
     .target(
       name: "MoviehubAPI",
       dependencies: [
-        "ComposableArchitecture",
-        "Overture",
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         "MoviehubTypes",
         "MoviehubUtils"
       ]

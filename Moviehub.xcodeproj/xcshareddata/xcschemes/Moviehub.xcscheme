@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1120"
+   LastUpgradeVersion = "1200"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FF89C74A2383CCDE00B87586"
+               BlueprintIdentifier = "FFAE3BB724A5065A00FAF510"
                BuildableName = "Moviehub.app"
                BlueprintName = "Moviehub"
                ReferencedContainer = "container:Moviehub.xcodeproj">
@@ -32,7 +32,17 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FF89C7602383CCDF00B87586"
+               BlueprintIdentifier = "FFB6289824ACBB08006B4D08"
+               BuildableName = "MoviehubSearchTests.xctest"
+               BlueprintName = "MoviehubSearchTests"
+               ReferencedContainer = "container:Moviehub.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FF1BA07D24B7F12B00C0C205"
                BuildableName = "MoviehubTests.xctest"
                BlueprintName = "MoviehubTests"
                ReferencedContainer = "container:Moviehub.xcodeproj">
@@ -54,7 +64,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FF89C74A2383CCDE00B87586"
+            BlueprintIdentifier = "FFAE3BB724A5065A00FAF510"
             BuildableName = "Moviehub.app"
             BlueprintName = "Moviehub"
             ReferencedContainer = "container:Moviehub.xcodeproj">
@@ -71,7 +81,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FF89C74A2383CCDE00B87586"
+            BlueprintIdentifier = "FFAE3BB724A5065A00FAF510"
             BuildableName = "Moviehub.app"
             BlueprintName = "Moviehub"
             ReferencedContainer = "container:Moviehub.xcodeproj">

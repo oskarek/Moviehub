@@ -1,6 +1,5 @@
 import XCTest
 @testable import MoviehubAPI
-import MoviehubTypes
 
 final class MoviehubAPITests: XCTestCase {
     func testEncodeAndDecode() {

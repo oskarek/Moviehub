@@ -49,7 +49,7 @@ public struct SearchEnvironment {
 
 // MARK: Reducer
 
-public let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>.strict { state, action in
+public let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment> { state, action, environment in
   struct PerformSeachId: Hashable {}
   struct MultiSearchId: Hashable {}
   struct ImageSearchId: Hashable {}
@@ -58,51 +58,43 @@ public let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>
   case let .textChanged(query):
     state.query = query
     guard !query.isEmpty else {
-      return { _ in
-        .merge(
-          Effect(value: .resultChanged(nil)),
-          .cancel(id: PerformSeachId()),
-          .cancel(id: ImageSearchId())
-        )
-      }
+      return .merge(
+        Effect(value: .resultChanged(nil)),
+        .cancel(id: PerformSeachId()),
+        .cancel(id: ImageSearchId())
+      )
     }
-    return { environment in
-      Effect(value: SearchAction.performSearch)
-        .debounce(
-          id: PerformSeachId(),
-          for: .milliseconds(300),
-          scheduler: environment.mainQueue
-        )
-    }
+    return Effect(value: SearchAction.performSearch)
+      .debounce(
+        id: PerformSeachId(),
+        for: .milliseconds(300),
+        scheduler: environment.mainQueue
+      )
   case let .resultChanged(items):
     state.shouldShowSpinner = false
     state.itemImageStates = [:]
     state.items = items
-    return { environment in
-      Effect.merge(items?.map { item in
-        environment.provider
-          .searchResultImage(item)
-          .receive(on: environment.mainQueue)
-          .eraseToEffect()
-          .map { $0.map(LoadingState.loaded) ?? .empty }
-          .map { SearchAction.setImageState(for: item.id, to: $0) }
-      } ?? [])
-      .cancellable(id: MultiSearchId(), cancelInFlight: true)
-    }
+    return Effect.merge(items?.map { item in
+      environment.provider
+        .searchResultImage(item)
+        .receive(on: environment.mainQueue)
+        .eraseToEffect()
+        .map { $0.map(LoadingState.loaded) ?? .empty }
+        .map { SearchAction.setImageState(for: item.id, to: $0) }
+    } ?? [])
+    .cancellable(id: MultiSearchId(), cancelInFlight: true)
   case let .setImageState(mediaItemId, imageState):
     state.itemImageStates[mediaItemId] = imageState
     return .none
   case .performSearch:
     state.shouldShowSpinner = state.items == nil
     let query = state.query
-    return { environment in
-      environment.provider
-        .multiSearch(query)
-        .receive(on: environment.mainQueue)
-        .eraseToEffect()
-        .map(SearchAction.resultChanged)
-        .cancellable(id: MultiSearchId(), cancelInFlight: true)
-    }
+    return environment.provider
+      .multiSearch(query)
+      .receive(on: environment.mainQueue)
+      .eraseToEffect()
+      .map(SearchAction.resultChanged)
+      .cancellable(id: MultiSearchId(), cancelInFlight: true)
   }
 }
 
@@ -127,7 +119,7 @@ public struct SearchView: View {
         )
         if viewStore.shouldShowSpinner {
           VStack {
-            ActivityIndicator()
+            ProgressView()
               .frame(width: CGFloat(15.0), height: CGFloat(15.0))
               .padding(50)
             Spacer()
@@ -136,7 +128,7 @@ public struct SearchView: View {
           SearchResultView(
             items: viewStore.items,
             imageStates: viewStore.itemImageStates
-          )
+          ).listStyle(PlainListStyle())
         }
       }
       .navigationBarTitle("Search")
@@ -165,17 +157,6 @@ struct SearchView_Previews: PreviewProvider {
     )
     return NavigationView {
       SearchView(store: store)
-    }
-  }
-}
-
-// TODO: move to some better place
-extension Reducer {
-  static func strict(
-    _ reducer: @escaping (inout State, Action) -> ((Environment) -> Effect<Action, Never>)?
-  ) -> Reducer {
-    .init { state, action, environment in
-      reducer(&state, action)?(environment) ?? .none
     }
   }
 }

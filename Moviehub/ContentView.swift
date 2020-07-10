@@ -1,6 +1,12 @@
-import SwiftUI
-import MoviehubSearch
+//
+//  ContentView.swift
+//  Moviehub
+//
+//  Created by Oskar Ek on 2020-06-25.
+//
+
 import ComposableArchitecture
+import SwiftUI
 
 struct ContentView: View {
   let store: Store<AppState, AppAction>
@@ -15,10 +21,10 @@ struct ContentView: View {
           )
         )
       }
-        .tabItem {
-          Image(systemName: "1.square.fill")
-          Text("Search")
-        }
+      .tabItem {
+        Image(systemName: "1.square.fill")
+        Text("Search")
+      }
     }
   }
 }

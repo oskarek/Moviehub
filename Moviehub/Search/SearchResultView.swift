@@ -4,17 +4,19 @@ import MoviehubTypes
 struct SearchResultView: View {
   let items: [MediaItem]?
   let imageStates: [MediaItem.ID: LoadingState<Data>]
-  var body: some View {
-    self.items.map { items in
-      AnyView(List {
+  @ViewBuilder var body: some View {
+    if let items = items {
+      List {
         ForEach(items) { item in
           SearchResultRow(
             imageState: self.imageStates[item.id] ?? .loading,
             mediaItem: item
           )
         }
-      })
-    } ?? AnyView(Spacer())
+      }
+    } else {
+      Spacer()
+    }
   }
 }
 
