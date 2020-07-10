@@ -8,6 +8,11 @@ jobs:
     runs-on: macOS-latest
 
     steps:
+    - name: setup-xcode
+      uses: maxim-lobanov/setup-xcode@1.0
+      with:
+        xcode-version: 12
+
     - uses: actions/checkout@v1
     - name: Build and test
       env:
@@ -15,5 +20,6 @@ jobs:
       run: |
         export TMDB_API_TOKEN=$THEMOVIEDB_API_KEY
         make
-        xcodebuild clean test -workspace Moviehub.xcworkspace -scheme Moviehub -destination 'platform=iOS Simulator,name=iPhone 11 Pro Max'
+        for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts
+        xcodebuild clean test -project Moviehub.xcodeproj -scheme Moviehub -destination 'platform=iOS Simulator,name=iPhone 11 Pro Max'
         
