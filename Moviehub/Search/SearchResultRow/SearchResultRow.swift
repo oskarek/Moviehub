@@ -7,7 +7,7 @@ struct SearchResultRow: View {
   let mediaItem: MediaItem
   var body: some View {
     HStack {
-      imageView(for: self.mediaItem, inState: self.imageState, ofSize: .init(width: 59, height: 88))
+      imageView(inState: self.imageState, ofSize: .init(width: 59, height: 88))
       VStack(alignment: .leading) {
         Text(mediaItem.headline)
           .font(.headline)

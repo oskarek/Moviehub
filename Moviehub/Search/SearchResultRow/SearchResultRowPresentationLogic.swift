@@ -39,7 +39,7 @@ private func clipped<V: View>(_ view: V, to size: CGSize) -> AnyView {
 }
 
 // Get the image view to be displayed for a mediaItem in the specified state
-func imageView(for: MediaItem, inState state: LoadingState<Data>, ofSize size: CGSize) -> some View {
+func imageView(inState state: LoadingState<Data>, ofSize size: CGSize) -> some View {
   switch state {
   case .empty:
     return clipped(emptyImage, to: size)

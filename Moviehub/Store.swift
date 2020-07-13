@@ -4,9 +4,9 @@ import MoviehubTypes
 
 struct AppState {
   var searchText: String = ""
-  var searchResult: [MediaItem]?
+  var searchResult: [MediaItem] = []
   var searchItemImageStates: [MediaItem.ID: LoadingState<Data>] = [:]
-  var shouldShowSearchSpinner: Bool = false
+  var searchShouldShowActivityIndicator: Bool = false
 }
 
 extension AppState {
@@ -16,14 +16,14 @@ extension AppState {
         query: self.searchText,
         items: self.searchResult,
         itemImageStates: self.searchItemImageStates,
-        shouldShowSpinner: self.shouldShowSearchSpinner
+        shouldShowActivityIndicator: self.searchShouldShowActivityIndicator
       )
     }
     set {
       self.searchText = newValue.query
       self.searchResult = newValue.items
       self.searchItemImageStates = newValue.itemImageStates
-      self.shouldShowSearchSpinner = newValue.shouldShowSpinner
+      self.searchShouldShowActivityIndicator = newValue.shouldShowActivityIndicator
     }
   }
 }

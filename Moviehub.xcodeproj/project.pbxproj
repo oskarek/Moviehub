@@ -10,9 +10,9 @@
 		FF1BA08924B7F18400C0C205 /* SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BA08824B7F18400C0C205 /* SearchTests.swift */; };
 		FF2A395B24ACEAEB0086F2E1 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A395924ACEAEB0086F2E1 /* AppEnvironment.swift */; };
 		FF2A395C24ACEAEB0086F2E1 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A395A24ACEAEB0086F2E1 /* Store.swift */; };
+		FF6D2E7424BB56660073EDF7 /* SearchCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6D2E7324BB56660073EDF7 /* SearchCore.swift */; };
 		FF98200124B7CEFB005F8C40 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB628B224ACBBE3006B4D08 /* SearchBar.swift */; };
-		FF98200224B7CEFB005F8C40 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB628B124ACBBE3006B4D08 /* Search.swift */; };
-		FF98200324B7CEFB005F8C40 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB628B024ACBBE3006B4D08 /* SearchResultView.swift */; };
+		FF98200224B7CEFB005F8C40 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB628B124ACBBE3006B4D08 /* SearchView.swift */; };
 		FF98200624B7D245005F8C40 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = FF98200524B7D245005F8C40 /* ComposableArchitecture */; };
 		FF9B4E4E24B7D48F00973A8B /* SearchResultRowPresentationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB628B724ACBBF4006B4D08 /* SearchResultRowPresentationLogic.swift */; };
 		FF9B4E4F24B7D49100973A8B /* SearchResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB628B624ACBBF4006B4D08 /* SearchResultRow.swift */; };
@@ -55,6 +55,7 @@
 		FF1BA08824B7F18400C0C205 /* SearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTests.swift; sourceTree = "<group>"; };
 		FF2A395924ACEAEB0086F2E1 /* AppEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		FF2A395A24ACEAEB0086F2E1 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		FF6D2E7324BB56660073EDF7 /* SearchCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCore.swift; sourceTree = "<group>"; };
 		FF981FFD24B7CB7C005F8C40 /* MoviehubAPI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MoviehubAPI; sourceTree = "<group>"; };
 		FF981FFE24B7CCB1005F8C40 /* MoviehubStyleguide */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MoviehubStyleguide; sourceTree = "<group>"; };
 		FF981FFF24B7CD4C005F8C40 /* MoviehubTypes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MoviehubTypes; sourceTree = "<group>"; };
@@ -65,8 +66,7 @@
 		FFAE3BBF24A5065B00FAF510 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFAE3BC224A5065B00FAF510 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FFAE3BC424A5065B00FAF510 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FFB628B024ACBBE3006B4D08 /* SearchResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
-		FFB628B124ACBBE3006B4D08 /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		FFB628B124ACBBE3006B4D08 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		FFB628B224ACBBE3006B4D08 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		FFB628B624ACBBF4006B4D08 /* SearchResultRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultRow.swift; sourceTree = "<group>"; };
 		FFB628B724ACBBF4006B4D08 /* SearchResultRowPresentationLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultRowPresentationLogic.swift; sourceTree = "<group>"; };
@@ -104,12 +104,28 @@
 			path = MoviehubTests;
 			sourceTree = "<group>";
 		};
+		FF6D2E7124BB563F0073EDF7 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				FF6D2E7324BB56660073EDF7 /* SearchCore.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		FF6D2E7224BB564D0073EDF7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FFB628B124ACBBE3006B4D08 /* SearchView.swift */,
+				FFB628B224ACBBE3006B4D08 /* SearchBar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		FF714FDC24B7E7B2005A6FCE /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				FFB628B124ACBBE3006B4D08 /* Search.swift */,
-				FFB628B224ACBBE3006B4D08 /* SearchBar.swift */,
-				FFB628B024ACBBE3006B4D08 /* SearchResultView.swift */,
+				FF6D2E7124BB563F0073EDF7 /* Core */,
+				FF6D2E7224BB564D0073EDF7 /* Views */,
 				FFB628AF24ACBB96006B4D08 /* SearchResultRow */,
 			);
 			path = Search;
@@ -316,13 +332,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6D2E7424BB56660073EDF7 /* SearchCore.swift in Sources */,
 				FF9B4E4E24B7D48F00973A8B /* SearchResultRowPresentationLogic.swift in Sources */,
 				FFAE3BBE24A5065A00FAF510 /* ContentView.swift in Sources */,
-				FF98200324B7CEFB005F8C40 /* SearchResultView.swift in Sources */,
 				FFAE3BBC24A5065A00FAF510 /* MoviehubApp.swift in Sources */,
 				FF98200124B7CEFB005F8C40 /* SearchBar.swift in Sources */,
 				FF9B4E4F24B7D49100973A8B /* SearchResultRow.swift in Sources */,
-				FF98200224B7CEFB005F8C40 /* Search.swift in Sources */,
+				FF98200224B7CEFB005F8C40 /* SearchView.swift in Sources */,
 				FF2A395B24ACEAEB0086F2E1 /* AppEnvironment.swift in Sources */,
 				FF2A395C24ACEAEB0086F2E1 /* Store.swift in Sources */,
 			);
