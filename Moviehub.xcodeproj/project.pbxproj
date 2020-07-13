@@ -13,7 +13,6 @@
 		FF6D2E7424BB56660073EDF7 /* SearchCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6D2E7324BB56660073EDF7 /* SearchCore.swift */; };
 		FF98200124B7CEFB005F8C40 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB628B224ACBBE3006B4D08 /* SearchBar.swift */; };
 		FF98200224B7CEFB005F8C40 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB628B124ACBBE3006B4D08 /* SearchView.swift */; };
-		FF98200624B7D245005F8C40 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = FF98200524B7D245005F8C40 /* ComposableArchitecture */; };
 		FF9B4E4E24B7D48F00973A8B /* SearchResultRowPresentationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB628B724ACBBF4006B4D08 /* SearchResultRowPresentationLogic.swift */; };
 		FF9B4E4F24B7D49100973A8B /* SearchResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB628B624ACBBF4006B4D08 /* SearchResultRow.swift */; };
 		FFAE3BBC24A5065A00FAF510 /* MoviehubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAE3BBB24A5065A00FAF510 /* MoviehubApp.swift */; };
@@ -24,6 +23,7 @@
 		FFB73F3724B7D2E900148AED /* MoviehubStyleguide in Frameworks */ = {isa = PBXBuildFile; productRef = FFB73F3624B7D2E900148AED /* MoviehubStyleguide */; };
 		FFB73F3924B7D2E900148AED /* MoviehubTypes in Frameworks */ = {isa = PBXBuildFile; productRef = FFB73F3824B7D2E900148AED /* MoviehubTypes */; };
 		FFB73F3B24B7D2E900148AED /* MoviehubUtils in Frameworks */ = {isa = PBXBuildFile; productRef = FFB73F3A24B7D2E900148AED /* MoviehubUtils */; };
+		FFE03A5E24BCB768003B8750 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = FFE03A5D24BCB768003B8750 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,11 +84,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFE03A5E24BCB768003B8750 /* ComposableArchitecture in Frameworks */,
 				FFB73F3B24B7D2E900148AED /* MoviehubUtils in Frameworks */,
 				FFB73F3524B7D2E900148AED /* MoviehubAPI in Frameworks */,
 				FFB73F3924B7D2E900148AED /* MoviehubTypes in Frameworks */,
 				FFB73F3724B7D2E900148AED /* MoviehubStyleguide in Frameworks */,
-				FF98200624B7D245005F8C40 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,11 +230,11 @@
 			);
 			name = Moviehub;
 			packageProductDependencies = (
-				FF98200524B7D245005F8C40 /* ComposableArchitecture */,
 				FFB73F3424B7D2E900148AED /* MoviehubAPI */,
 				FFB73F3624B7D2E900148AED /* MoviehubStyleguide */,
 				FFB73F3824B7D2E900148AED /* MoviehubTypes */,
 				FFB73F3A24B7D2E900148AED /* MoviehubUtils */,
+				FFE03A5D24BCB768003B8750 /* ComposableArchitecture */,
 			);
 			productName = Moviehub;
 			productReference = FFAE3BB824A5065A00FAF510 /* Moviehub.app */;
@@ -268,7 +268,7 @@
 			);
 			mainGroup = FFAE3BAF24A5065A00FAF510;
 			packageReferences = (
-				FF98200424B7D245005F8C40 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				FFE03A5C24BCB768003B8750 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = FFAE3BB924A5065A00FAF510 /* Products */;
 			projectDirPath = "";
@@ -590,9 +590,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FF98200424B7D245005F8C40 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+		FFE03A5C24BCB768003B8750 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:pointfreeco/swift-composable-architecture.git";
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.6.0;
@@ -601,11 +601,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FF98200524B7D245005F8C40 /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FF98200424B7D245005F8C40 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
-		};
 		FFB73F3424B7D2E900148AED /* MoviehubAPI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MoviehubAPI;
@@ -621,6 +616,11 @@
 		FFB73F3A24B7D2E900148AED /* MoviehubUtils */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MoviehubUtils;
+		};
+		FFE03A5D24BCB768003B8750 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFE03A5C24BCB768003B8750 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

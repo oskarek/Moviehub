@@ -13,7 +13,7 @@ let package = Package(
     )
   ],
   dependencies: [
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: .init(0, 6, 0)),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: .init(0, 6, 0)),
     .package(path: "../MoviehubTypes"),
     .package(path: "../MoviehubUtils")
   ],
