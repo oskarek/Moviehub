@@ -38,12 +38,14 @@ extension SimpleDate: Equatable {}
 
 extension SimpleDate: Comparable {
   public static func < (lhs: SimpleDate, rhs: SimpleDate) -> Bool {
-    return [lhs.year, lhs.month, lhs.day] < [rhs.year, rhs.month, rhs.day]
+    return (lhs.year, lhs.month, lhs.day) < (rhs.year, rhs.month, rhs.day)
   }
 }
 
 extension SimpleDate: CustomStringConvertible {
   public var description: String {
-    return "\(self.year)-\(self.month)-\(self.day)"
+    let monthString = "0\(self.month)".suffix(2)
+    let dayString = "0\(self.day)".suffix(2)
+    return "\(self.year)-\(monthString)-\(dayString)"
   }
 }
