@@ -11,6 +11,7 @@
 		FF2A395B24ACEAEB0086F2E1 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A395924ACEAEB0086F2E1 /* AppEnvironment.swift */; };
 		FF2A395C24ACEAEB0086F2E1 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A395A24ACEAEB0086F2E1 /* Store.swift */; };
 		FF6D2E7424BB56660073EDF7 /* SearchCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6D2E7324BB56660073EDF7 /* SearchCore.swift */; };
+		FF83001B24BD84340068F6F7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF83001D24BD84340068F6F7 /* Localizable.strings */; };
 		FF98200124B7CEFB005F8C40 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB628B224ACBBE3006B4D08 /* SearchBar.swift */; };
 		FF98200224B7CEFB005F8C40 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB628B124ACBBE3006B4D08 /* SearchView.swift */; };
 		FF9B4E4E24B7D48F00973A8B /* SearchResultRowPresentationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB628B724ACBBF4006B4D08 /* SearchResultRowPresentationLogic.swift */; };
@@ -56,6 +57,8 @@
 		FF2A395924ACEAEB0086F2E1 /* AppEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		FF2A395A24ACEAEB0086F2E1 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		FF6D2E7324BB56660073EDF7 /* SearchCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCore.swift; sourceTree = "<group>"; };
+		FF83001C24BD84340068F6F7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FF83001E24BD845A0068F6F7 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF981FFD24B7CB7C005F8C40 /* MoviehubAPI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MoviehubAPI; sourceTree = "<group>"; };
 		FF981FFE24B7CCB1005F8C40 /* MoviehubStyleguide */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MoviehubStyleguide; sourceTree = "<group>"; };
 		FF981FFF24B7CD4C005F8C40 /* MoviehubTypes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MoviehubTypes; sourceTree = "<group>"; };
@@ -157,6 +160,7 @@
 		FFAE3BBA24A5065A00FAF510 /* Moviehub */ = {
 			isa = PBXGroup;
 			children = (
+				FF83001D24BD84340068F6F7 /* Localizable.strings */,
 				FF714FDC24B7E7B2005A6FCE /* Search */,
 				FF2A395924ACEAEB0086F2E1 /* AppEnvironment.swift */,
 				FF2A395A24ACEAEB0086F2E1 /* Store.swift */,
@@ -265,6 +269,7 @@
 			knownRegions = (
 				en,
 				Base,
+				sv,
 			);
 			mainGroup = FFAE3BAF24A5065A00FAF510;
 			packageReferences = (
@@ -293,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFAE3BC324A5065B00FAF510 /* Preview Assets.xcassets in Resources */,
+				FF83001B24BD84340068F6F7 /* Localizable.strings in Resources */,
 				FFAE3BC024A5065B00FAF510 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,6 +359,18 @@
 			targetProxy = FF1BA08324B7F12B00C0C205 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FF83001D24BD84340068F6F7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF83001C24BD84340068F6F7 /* en */,
+				FF83001E24BD845A0068F6F7 /* sv */,
+			);
+			name = Localizable.strings;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FF1BA08524B7F12B00C0C205 /* Debug */ = {

@@ -49,11 +49,11 @@ extension View {
 }
 
 public struct SearchBar: View {
-  let title: String
+  let title: LocalizedStringKey
   @Binding var searchText: String
   let isSearching: Bool
 
-  public init(title: String, searchText: Binding<String>, isSearching: Bool = false) {
+  public init(title: LocalizedStringKey, searchText: Binding<String>, isSearching: Bool = false) {
     self.title = title
     self._searchText = searchText
     self.isSearching = isSearching

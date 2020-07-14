@@ -60,5 +60,6 @@ struct SearchView_Previews: PreviewProvider {
     return NavigationView {
       SearchView(store: store)
     }
+    .environment(\.locale, Locale(identifier: "sv_SE"))
   }
 }
