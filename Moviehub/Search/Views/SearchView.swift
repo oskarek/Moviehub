@@ -23,7 +23,7 @@ public struct SearchView: View {
         )
 
         List(viewStore.items) { item in
-          NavigationLink(destination: Text("\(item.headline)")) {
+          NavigationLink(destination: Text(String(describing: item))) {
             SearchResultRow(
               imageState: viewStore.itemImageStates[item.id] ?? .loading,
               mediaItem: item
@@ -41,19 +41,14 @@ public struct SearchView: View {
 // MARK: Previews
 
 struct SearchView_Previews: PreviewProvider {
-  static let searchResult = [MediaItem.movie(dummyMovie), .tv(dummyTVShow), .person(dummyPerson)]
+  static let searchResult = [MediaItem.dummyMovieItem, .dummyTVShowItem, .dummyPersonItem]
 
   static var previews: some View {
     let store = Store<SearchState, SearchAction>(
-      initialState: .init(
-        query: "",
-        items: [],
-        itemImageStates: [:],
-        shouldShowActivityIndicator: false
-      ),
+      initialState: SearchState(),
       reducer: searchReducer,
       environment: .init(
-        provider: .mock,
+        provider: .mock(),
         mainQueue: DispatchQueue.main.eraseToAnyScheduler()
       )
     )

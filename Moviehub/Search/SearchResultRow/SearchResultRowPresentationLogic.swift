@@ -5,25 +5,14 @@ import MoviehubUtils
 import MoviehubStyleguide
 
 extension MediaItem {
-  var headline: String {
-    switch self {
-    case let .movie(movie):
-      return "\(movie.title) (\(movie.releaseDate.year))"
-    case let .tv(tvShow):
-      return "\(tvShow.name) (\(tvShow.firstAirDate.year))"
-    case let .person(person):
-      return person.name
-    }
-  }
-
   var subheadline: String {
     switch self {
     case let .movie(movie):
       return movie.overview ?? ""
-    case let .tv(tvShow):
+    case let .tvShow(tvShow):
       return tvShow.overview ?? ""
     case let .person(person):
-      return person.knownFor.map { $0.headline }.joined(separator: ", ")
+      return person.knownFor.map { "\($0)" }.joined(separator: ", ")
     }
   }
 }
@@ -39,7 +28,7 @@ private func clipped<V: View>(_ view: V, to size: CGSize) -> AnyView {
 }
 
 // Get the image view to be displayed for a mediaItem in the specified state
-func imageView(inState state: LoadingState<Data>, ofSize size: CGSize) -> some View {
+func imageView(inState state: LoadingState<UIImage>, ofSize size: CGSize) -> some View {
   switch state {
   case .empty:
     return clipped(emptyImage, to: size)
@@ -51,8 +40,8 @@ func imageView(inState state: LoadingState<Data>, ofSize size: CGSize) -> some V
         .frame(width: 15, height: 15)
     }
     return clipped(stack, to: size)
-  case let .loaded(data):
-    let image = Image(uiImage: UIImage(data: data)!).resizable()
+  case let .loaded(image):
+    let image = Image(uiImage: image).resizable()
     return clipped(image, to: size)
   }
 }

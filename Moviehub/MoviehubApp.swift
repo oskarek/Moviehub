@@ -10,9 +10,15 @@ import ComposableArchitecture
 
 @main
 struct MoviehubApp: App {
+  let appStore = Store<AppState, AppAction>(
+    initialState: AppState(),
+    reducer: appReducer,
+    environment: .live
+  )
+
   var body: some Scene {
     WindowGroup {
-      ContentView(store: store)
+      ContentView(store: appStore)
     }
   }
 }

@@ -2,6 +2,28 @@ import ComposableArchitecture
 import Foundation
 import MoviehubAPI
 import MoviehubTypes
+import UIKit
+
+// MARK: State
+
+public struct SearchState: Equatable {
+  public var query: String
+  public var items: [MediaItem]
+  public var itemImageStates: [MediaItem.ID: LoadingState<UIImage>]
+  public var shouldShowActivityIndicator: Bool
+
+  public init(
+    query: String = "",
+    items: [MediaItem] = [],
+    itemImageStates: [MediaItem.ID: LoadingState<UIImage>] = [:],
+    shouldShowActivityIndicator: Bool = false
+  ) {
+    self.query = query
+    self.items = items
+    self.itemImageStates = itemImageStates
+    self.shouldShowActivityIndicator = shouldShowActivityIndicator
+  }
+}
 
 // MARK: Action
 
@@ -9,29 +31,8 @@ public enum SearchAction: Equatable {
   case textChanged(String)
   case performSearch
   case resultChanged([MediaItem]?)
-  case setImageState(for: MediaItem.ID, to: LoadingState<Data>)
+  case setImageState(for: MediaItem.ID, to: LoadingState<UIImage>)
   case showActivityIndicator
-}
-
-// MARK: State
-
-public struct SearchState: Equatable {
-  public var query: String
-  public var items: [MediaItem]
-  public var itemImageStates: [MediaItem.ID: LoadingState<Data>]
-  public var shouldShowActivityIndicator: Bool
-
-  public init(
-    query: String,
-    items: [MediaItem],
-    itemImageStates: [MediaItem.ID: LoadingState<Data>],
-    shouldShowActivityIndicator: Bool
-  ) {
-    self.query = query
-    self.items = items
-    self.itemImageStates = itemImageStates
-    self.shouldShowActivityIndicator = shouldShowActivityIndicator
-  }
 }
 
 // MARK: Environment

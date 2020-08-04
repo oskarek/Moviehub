@@ -1,0 +1,121 @@
+{
+  "page": 1,
+  "total_results": 16,
+  "total_pages": 1,
+  "results": [
+    {
+      "poster_path": "/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+      "popularity": 69.214,
+      "vote_count": 23038,
+      "video": false,
+      "media_type": "movie",
+      "id": 157336,
+      "adult": false,
+      "backdrop_path": "/xJHokMbljvjADYdit5fK5VQsXEG.jpg",
+      "original_language": "en",
+      "original_title": "Interstellar",
+      "genre_ids": [
+        12,
+        18,
+        878
+      ],
+      "title": "Interstellar",
+      "vote_average": 8.3,
+      "overview": "The adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
+      "release_date": "2014-11-05"
+    },
+    {
+      "original_name": "Friends",
+      "genre_ids": [
+        35,
+        18
+      ],
+      "media_type": "tv",
+      "name": "Friends",
+      "popularity": 111.278,
+      "origin_country": [
+        "US"
+      ],
+      "vote_count": 2779,
+      "first_air_date": "1994-09-22",
+      "backdrop_path": "/l0qVZIpXtIo7km9u5Yqh0nKPOr5.jpg",
+      "original_language": "en",
+      "id": 1668,
+      "vote_average": 8.2,
+      "overview": "The misadventures of a group of friends as they navigate the pitfalls of work, life and love in Manhattan.",
+      "poster_path": "/f496cm9enuEsZkSPzCwnTESEK5s.jpg"
+    },
+    {
+      "known_for_department": "Acting",
+      "id": 31,
+      "name": "Tom Hanks",
+      "known_for": [
+        {
+          "poster_path": "/clolk7rB5lAjs41SD0Vt6IXYLMm.jpg",
+          "vote_count": 18482,
+          "video": false,
+          "media_type": "movie",
+          "id": 13,
+          "adult": false,
+          "backdrop_path": "/7c9UVPPiTPltouxRVY6N9uugaVA.jpg",
+          "original_language": "en",
+          "original_title": "Forrest Gump",
+          "genre_ids": [
+            35,
+            18,
+            10749
+          ],
+          "title": "Forrest Gump",
+          "vote_average": 8.4,
+          "overview": "A man with a low IQ has accomplished great things in his life and been present during significant historic events—in each case, far exceeding what anyone imagined he could do. But despite all he has achieved, his one true love eludes him.",
+          "release_date": "1994-07-06"
+        },
+        {
+          "poster_path": "/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg",
+          "vote_count": 12681,
+          "video": false,
+          "media_type": "movie",
+          "id": 862,
+          "adult": false,
+          "backdrop_path": "/lxD5ak7BOoinRNehOCA85CQ8ubr.jpg",
+          "original_language": "en",
+          "original_title": "Toy Story",
+          "genre_ids": [
+            16,
+            35,
+            10751
+          ],
+          "title": "Toy Story",
+          "vote_average": 7.9,
+          "overview": "Led by Woody, Andy's toys live happily in his room until Andy's birthday brings Buzz Lightyear onto the scene. Afraid of losing his place in Andy's heart, Woody plots against Buzz. But when circumstances separate Buzz and Woody from their owner, the duo eventually learns to put aside their differences.",
+          "release_date": "1995-10-30"
+        },
+        {
+          "poster_path": "/velWPhVMQeQKcxggNEU8YmIo52R.jpg",
+          "vote_count": 10575,
+          "video": false,
+          "media_type": "movie",
+          "id": 497,
+          "adult": false,
+          "backdrop_path": "/l6hQWH9eDksNJNiXWYRkWqikOdu.jpg",
+          "original_language": "en",
+          "original_title": "The Green Mile",
+          "genre_ids": [
+            80,
+            18,
+            14
+          ],
+          "title": "The Green Mile",
+          "vote_average": 8.5,
+          "overview": "A supernatural tale set on death row in a Southern prison, where gentle giant John Coffey possesses the mysterious power to heal people's ailments. When the cell block's head guard, Paul Edgecomb, recognizes Coffey's miraculous gift, he tries desperately to help stave off the condemned man's execution.",
+          "release_date": "1999-12-10"
+        }
+      ],
+      "popularity": 34.399,
+      "profile_path": "/sQRntmQpeXiNEyrW323RANWwDeS.jpg",
+      "adult": false,
+      "media_type": "person",
+      "gender": 2
+    }
+  ]
+}

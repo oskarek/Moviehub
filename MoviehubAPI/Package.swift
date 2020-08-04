@@ -24,11 +24,16 @@ let package = Package(
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         "MoviehubTypes",
         "MoviehubUtils"
-      ]
+      ],
+      resources: [.process("Samples")]
     ),
     .testTarget(
       name: "MoviehubAPITests",
-      dependencies: ["MoviehubAPI", "MoviehubTypes"]
+      dependencies: [
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        "MoviehubAPI",
+        "MoviehubTypes"
+      ]
     )
   ]
 )

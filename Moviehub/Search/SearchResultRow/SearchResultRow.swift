@@ -3,13 +3,13 @@ import MoviehubTypes
 import MoviehubUtils
 
 struct SearchResultRow: View {
-  let imageState: LoadingState<Data>
+  let imageState: LoadingState<UIImage>
   let mediaItem: MediaItem
   var body: some View {
     HStack {
       imageView(inState: self.imageState, ofSize: .init(width: 59, height: 88))
       VStack(alignment: .leading) {
-        Text(mediaItem.headline)
+        Text(String(describing: mediaItem))
           .font(.headline)
         Text(mediaItem.subheadline)
           .font(.caption)
@@ -23,14 +23,14 @@ struct SearchResultRow: View {
 }
 
 struct SearchResultRow_Previews: PreviewProvider {
-  static let items = [MediaItem.movie(dummyMovie), .tv(dummyTVShow), .person(dummyPerson)]
+  static let items = [MediaItem.dummyMovieItem, .dummyTVShowItem, .dummyPersonItem]
 
   static var previews: some View {
     Group {
       ForEach(items) { item in
         SearchResultRow(imageState: .empty, mediaItem: item)
           .previewLayout(.sizeThatFits)
-          .previewDisplayName(item.headline)
+          .previewDisplayName("\(item)")
       }
     }
   }

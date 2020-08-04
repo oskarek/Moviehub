@@ -10,24 +10,19 @@ class SearchTests: XCTestCase {
     func mockMultiSearch(delayedBy delay: DispatchQueue.SchedulerTimeType.Stride = .zero)
       -> (String) -> Effect<[MediaItem]?, Never> {
       return { query in
-        Effect(value: query.isEmpty ? nil : [MediaItem.movie(dummyMovie)])
+        Effect(value: query.isEmpty ? nil : [.dummyMovieItem])
           .delay(for: delay, scheduler: self.scheduler)
           .eraseToEffect()
       }
     }
 
     let store = TestStore(
-      initialState: SearchState(
-        query: "",
-        items: [],
-        itemImageStates: [:],
-        shouldShowActivityIndicator: false
-      ),
+      initialState: SearchState(),
       reducer: searchReducer,
       environment: SearchEnvironment(
         provider: .init(
           multiSearch: mockMultiSearch(),
-          searchResultImage: { _ in Effect(value: Data()) },
+          searchResultImage: { _ in Effect(value: UIImage()) },
           movie: { _ in fatalError() }
         ),
         mainQueue: self.scheduler.eraseToAnyScheduler()
@@ -49,12 +44,12 @@ class SearchTests: XCTestCase {
       // Finally, debounce time is reached and action should be received
       .receive(.performSearch),
       .do { self.scheduler.advance() },
-      .receive(.resultChanged([.movie(dummyMovie)])) {
-        $0.items = [.movie(dummyMovie)]
+      .receive(.resultChanged([.dummyMovieItem])) {
+        $0.items = [.dummyMovieItem]
       },
       .do { self.scheduler.advance() },
-      .receive(.setImageState(for: dummyMovie.id, to: .loaded(Data()))) {
-        $0.itemImageStates[dummyMovie.id] = .loaded(Data())
+      .receive(.setImageState(for: MediaItem.dummyMovieItem.id, to: .loaded(UIImage()))) {
+        $0.itemImageStates[MediaItem.dummyMovieItem.id] = .loaded(UIImage())
       },
       .environment { $0.provider.multiSearch = mockMultiSearch(delayedBy: .milliseconds(350)) },
       .send(.textChanged("Int")) {
@@ -71,11 +66,11 @@ class SearchTests: XCTestCase {
       .do { self.scheduler.advance(by: .milliseconds(49)) },
       .do { self.scheduler.advance(by: .milliseconds(1)) },
       // after 50 additional milliseconds, result should be updated
-      .receive(.resultChanged([.movie(dummyMovie)])) {
+      .receive(.resultChanged([.dummyMovieItem])) {
         $0.shouldShowActivityIndicator = false
       },
       .do { self.scheduler.advance() },
-      .receive(.setImageState(for: dummyMovie.id, to: .loaded(Data()))),
+      .receive(.setImageState(for: MediaItem.dummyMovieItem.id, to: .loaded(UIImage()))),
       .send(.textChanged("")) {
         $0.query = ""
       },
@@ -88,12 +83,7 @@ class SearchTests: XCTestCase {
 
   func testSearchUnhappyFlow() {
     let store = TestStore(
-      initialState: SearchState(
-        query: "",
-        items: [],
-        itemImageStates: [:],
-        shouldShowActivityIndicator: false
-      ),
+      initialState: SearchState(),
       reducer: searchReducer,
       environment: SearchEnvironment(
         provider: .init(

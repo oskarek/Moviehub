@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FF1BA08924B7F18400C0C205 /* SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BA08824B7F18400C0C205 /* SearchTests.swift */; };
-		FF2A395B24ACEAEB0086F2E1 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A395924ACEAEB0086F2E1 /* AppEnvironment.swift */; };
-		FF2A395C24ACEAEB0086F2E1 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A395A24ACEAEB0086F2E1 /* Store.swift */; };
+		FF2A395C24ACEAEB0086F2E1 /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A395A24ACEAEB0086F2E1 /* AppCore.swift */; };
 		FF6D2E7424BB56660073EDF7 /* SearchCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6D2E7324BB56660073EDF7 /* SearchCore.swift */; };
 		FF83001B24BD84340068F6F7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF83001D24BD84340068F6F7 /* Localizable.strings */; };
 		FF98200124B7CEFB005F8C40 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB628B224ACBBE3006B4D08 /* SearchBar.swift */; };
@@ -54,8 +53,7 @@
 		FF1BA07E24B7F12B00C0C205 /* MoviehubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviehubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF1BA08224B7F12B00C0C205 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF1BA08824B7F18400C0C205 /* SearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTests.swift; sourceTree = "<group>"; };
-		FF2A395924ACEAEB0086F2E1 /* AppEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
-		FF2A395A24ACEAEB0086F2E1 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		FF2A395A24ACEAEB0086F2E1 /* AppCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCore.swift; sourceTree = "<group>"; };
 		FF6D2E7324BB56660073EDF7 /* SearchCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCore.swift; sourceTree = "<group>"; };
 		FF83001C24BD84340068F6F7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF83001E24BD845A0068F6F7 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -162,8 +160,7 @@
 			children = (
 				FF83001D24BD84340068F6F7 /* Localizable.strings */,
 				FF714FDC24B7E7B2005A6FCE /* Search */,
-				FF2A395924ACEAEB0086F2E1 /* AppEnvironment.swift */,
-				FF2A395A24ACEAEB0086F2E1 /* Store.swift */,
+				FF2A395A24ACEAEB0086F2E1 /* AppCore.swift */,
 				FFAE3BBB24A5065A00FAF510 /* MoviehubApp.swift */,
 				FFAE3BBD24A5065A00FAF510 /* ContentView.swift */,
 				FFAE3BBF24A5065B00FAF510 /* Assets.xcassets */,
@@ -345,8 +342,7 @@
 				FF98200124B7CEFB005F8C40 /* SearchBar.swift in Sources */,
 				FF9B4E4F24B7D49100973A8B /* SearchResultRow.swift in Sources */,
 				FF98200224B7CEFB005F8C40 /* SearchView.swift in Sources */,
-				FF2A395B24ACEAEB0086F2E1 /* AppEnvironment.swift in Sources */,
-				FF2A395C24ACEAEB0086F2E1 /* Store.swift in Sources */,
+				FF2A395C24ACEAEB0086F2E1 /* AppCore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
